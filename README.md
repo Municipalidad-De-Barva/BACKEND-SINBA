@@ -29,11 +29,9 @@
 ### Requerimientos Funcionales.
 
 1. - [ ] RF-01 Solicitar Patentes
-   1. In Progress
-      1. [ ] Desarrollar el API de conexiones.
-      2. [ ] Implementar las Bases de datos.
-      3. [ ] Construir la página base del proyecto
-      4. [ ] Diseño e investigación del formato de los formularios de patente comercial.
-      5. [ ] Diseño e investigación del formato de los formularios de expendio de bebidas alcohólicas unificado
-   2. To Do
-   3. Done
+
+   1. [ ] Desarrollar el API de conexiones.
+   2. [ ] Implementar las Bases de datos.
+   3. [ ] Construir la página base del proyecto
+   4. [ ] Diseño e investigación del formato de los formularios de patente comercial.
+   5. [ ] Diseño e investigación del formato de los formularios de expendio de bebidas alcohólicas unificado
