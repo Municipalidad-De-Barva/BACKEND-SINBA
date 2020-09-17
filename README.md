@@ -21,9 +21,16 @@
 
 ## Tecnologias.
 
+![SQL](tools-images/sql.png "SQL logo")
+![Reactjs](tools-images/react.png "Reactjs logo")
+![Nodejs](tools-images/nodejs.png "Nodejs logo")
+![Html5](tools-images/html5.png "Html5 logo")
+![GitHub](tools-images/github.png "GitHub logo")
+![Azure](tools-images/azure.png "Azure logo")
+
 1. MySql.
-2. Express.js
-3. React.
+2. Express.js.
+3. React.js.
 4. Node.js
 
 # Sprints
@@ -32,9 +39,9 @@
 
 ### Requerimientos Funcionales.
 
-1.  [ ] :one: RF-01 Solicitar Patentes :bookmark_tabs: :memo: :hammer:
-    1. [ ] Desarrollar el API de conexiones.
-    2. [ ] Implementar las Bases de datos.
-    3. [ ] Construir la página base del proyecto
-    4. [ ] Diseño e investigación del formato de los formularios de patente comercial.
-    5. [ ] Diseño e investigación del formato de los formularios de expendio de bebidas alcohólicas unificado
+1. :one: [ ] RF-01 Solicitar Patentes :bookmark_tabs: :memo: :hammer:
+   1. [ ] Desarrollar el API de conexiones.
+   2. [ ] Implementar las Bases de datos.
+   3. [ ] Construir la página base del proyecto
+   4. [ ] Diseño e investigación del formato de los formularios de patente comercial.
+   5. [ ] Diseño e investigación del formato de los formularios de expendio de bebidas alcohólicas unificado
