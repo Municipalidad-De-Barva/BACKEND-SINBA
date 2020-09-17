@@ -19,19 +19,19 @@
 
 ## Descripcion del Proyecto.
 
-## Tecnologias.
+## Tecnologias. ![Code](tools-images/code.png "Code logo")
 
 ![SQL](tools-images/sql.png "SQL logo")
-![Reactjs](tools-images/react.png "Reactjs logo")
-![Nodejs](tools-images/nodejs.png "Nodejs logo")
+![Expressjs](tools-images/express.png "Express.js logo")
+![Reactjs](tools-images/react.png "React.js logo")
+![Nodejs](tools-images/nodejs.png "Node.js logo")
+
 ![Html5](tools-images/html5.png "Html5 logo")
+![Css](tools-images/css.png "Css logo")
+![JavaScript](tools-images/javascript.png "JavaScript logo")
+
 ![GitHub](tools-images/github.png "GitHub logo")
 ![Azure](tools-images/azure.png "Azure logo")
-
-1. MySql.
-2. Express.js.
-3. React.js.
-4. Node.js
 
 # Sprints
 
@@ -39,7 +39,7 @@
 
 ### Requerimientos Funcionales.
 
-1. :one: [ ] RF-01 Solicitar Patentes :bookmark_tabs: :memo: :hammer:
+1. [ ] RF-01 Solicitar Patentes :bookmark_tabs: :memo: :hammer:
    1. [ ] Desarrollar el API de conexiones.
    2. [ ] Implementar las Bases de datos.
    3. [ ] Construir la página base del proyecto
