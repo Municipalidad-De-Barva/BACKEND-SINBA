@@ -4,7 +4,7 @@
   "description": ":classical_building: [Universidad Nacional de Costa Rica(UNA).](https://www.una.ac.cr/ \"Pagina Principal de la Universidad Nacional\")",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/Municipalidad-De-Barva/SINBA/issues"
   },
-  "homepage": "https://github.com/Municipalidad-De-Barva/SINBA#readme"
+  "homepage": "https://github.com/Municipalidad-De-Barva/SINBA#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "underscore": "^1.11.0"
+  }
 }
