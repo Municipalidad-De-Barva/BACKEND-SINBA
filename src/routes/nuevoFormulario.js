@@ -1,3 +1,6 @@
+const { Router } = require('express');
+const router=Router();
+
 router.post('/', (req,res)=>{
     const{tipoSol,nomSolicitante,cedulaSolicitante,represLegalSolicitante,
         cedulaJuriSolicitante,telSolicitante,faxSolicitante,dirSolicitante,
@@ -14,3 +17,5 @@ router.post('/', (req,res)=>{
     }
     
 });
+
+module.exports=router;
