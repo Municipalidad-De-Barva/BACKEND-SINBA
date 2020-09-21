@@ -13,6 +13,7 @@ app.use(express.json());
 
 //routes
 app.use(require('./routes/index'));
+app.use('/api/nuevoForm',require('./routes/nuevoFormulario'));
 
 //starting the server
 app.listen(app.get('port'),()=>{
