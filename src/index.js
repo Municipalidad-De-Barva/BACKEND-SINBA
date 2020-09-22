@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const morgan =  require('morgan');
 
+const request = require('request');
+
 //settings
 app.set('port',process.env.PORT || 3001);
 app.set('json spaces',2);
@@ -12,7 +14,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 //routes
-app.use(require('./routes/index'));
+//app.use(require('./routes/index'));
 app.use('/api/nuevoForm',require('./routes/nuevoFormulario'));
 
 //starting the server
@@ -22,22 +24,24 @@ app.listen(app.get('port'),()=>{
 
 );
 
-// Add headers
-app.use(function (req, res, next) {
 
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin *');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-
-    // Pass to next layer of middleware
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
     next();
-});
+  });
+  app.use(require('./routes/index'));
+  /*
+  app.get('http://localhost:3001/', (req, res) => {
+      console.log(app.url);
+    request(
+      { url: 'http://localhost:3001/' },
+      (error, response, body) => {
+        if (error || response.statusCode !== 200) {
+          return res.status(500).json({ type: 'error', message: err.message });
+        }
+  
+        res.json(JSON.parse(body));
+      }
+    )
+  });*/
+  //app.listen(PORT, () => console.log(`listening on ${PORT}`));

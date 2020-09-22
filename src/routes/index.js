@@ -13,6 +13,7 @@ router.post('/', (req,res)=>{
         console.log(msg);
     }else{
         res.status(500).json({error:'There was an error'});
+        console.log(req.body);
     }
     
 });
