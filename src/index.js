@@ -15,7 +15,7 @@ app.use(express.json());
 
 //routes
 //app.use(require('./routes/index'));
-app.use('/api/nuevoForm',require('./routes/nuevoFormulario'));
+
 
 //starting the server
 app.listen(app.get('port'),()=>{
@@ -26,22 +26,13 @@ app.listen(app.get('port'),()=>{
 
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    //res.header('Access-Control-Allow-Origin', '*');
+    res.header({"Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Credentials": "true",
+    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+});
     next();
   });
   app.use(require('./routes/index'));
-  /*
-  app.get('http://localhost:3001/', (req, res) => {
-      console.log(app.url);
-    request(
-      { url: 'http://localhost:3001/' },
-      (error, response, body) => {
-        if (error || response.statusCode !== 200) {
-          return res.status(500).json({ type: 'error', message: err.message });
-        }
-  
-        res.json(JSON.parse(body));
-      }
-    )
-  });*/
-  //app.listen(PORT, () => console.log(`listening on ${PORT}`));
+  app.use('/api/nuevoForm',require('./routes/nuevoFormulario'));
