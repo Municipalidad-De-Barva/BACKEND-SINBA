@@ -40,48 +40,37 @@ class DaoContribuyente {
         })
     }
 
-    insertar_Contribuyente(PK_ID, Tipo, Nombre, Apellido1, Apellido2, Telefono, Direccion, Fax, Correo, callback) {
+    insertar_Contribuyente(PK_ID, Tipo, Nombre, Telefono, Direccion, Fax, Correo, callback) {
+        this.obtener_Contribuyente(PK_ID, function (result) {
+            if (result === "No se encuentra registrado...") {
+             const DaoUsu = new daoUsuario();
+                DaoUsu.insertar_Usuarios(PK_ID, Tipo, function (result) {
+                    const connection = dbConnection();
+                    var sql = "INSERT INTO contribuyente SET ?";
 
-        this.DaoUsu.insertar_Usuarios(PK_ID, Tipo, function (result) {
-            const connection = dbConnection();
-            var sql = "INSERT INTO contribuyente SET ?";
+                    connection.query(sql, {
+                        PK_ID,
+                        Nombre,
+                        Telefono,
+                        Direccion,
+                        Fax,
+                        Correo
+                    }, function (err, results) {
+                        if (err) {
+                            throw err;
+                        }
+                        var mostrarMensaje = "Se realizó con exito...";
+                        return callback(mostrarMensaje);
 
-            connection.query(sql, {
-                PK_ID,
-                Nombre,
-                Apellido1,
-                Apellido2,
-                Telefono,
-                Direccion,
-                Fax,
-                Correo
-            }, function (err, results) {
-                if (err) {
-                    throw err;
-                }
-                var mostrarMensaje = "Se realizó con exito...";
-                return callback(mostrarMensaje);
+                    })
+                });
+            }
+            else {
+                return callback("Se encuentra registrado");
+            }
 
-                //return callback(results);
-            })
         });
-
-        /*var sql = "INSERT INTO  SET ?";
-
-        this.connection.query(sql,
-            {
-                PK_ID,
-                Tipo
-            }, function (err, results) {
-                if (err) {
-                    throw err;
-                }
-
-                return callback(results);
-
-                //return callback(results);
-            })*/
-    }
+}
 
 
 
