@@ -42,28 +42,36 @@ class DaoUsuario {
         })
     }
 
-    insertar_Usuarios(PK_ID,Tipo,callback) {
 
-        var sql = "INSERT INTO usuario SET ?";
+    insertar_Usuarios(PK_ID, Tipo, callback) {
 
-        this.connection.query(sql,
-            {
-              PK_ID,
-              Tipo
-            }, function (err, results) {
-            if (err) {
-                throw err;
+        this.obtener_Usuario(PK_ID, function (result) {
+            console.log(result);
+        
+            if (result === "No se encuentra registrado...") {
+
+                const connection = dbConnection();
+                var sql = "INSERT INTO usuario SET ?";
+
+                connection.query(sql,
+                    {
+                        PK_ID,
+                        Tipo
+                    }, function (err, results) {
+                        if (err) {
+                            throw err;
+                        }
+
+                        return callback("Se ingreso nuevo usuario");
+
+                    })
             }
-            
-            return callback("");
-            
-            //return callback(results);
-        })
+            else {
+                return callback("Se encuentra registrado");
+            }
+        });
+
     }
-
-
-
-
 
 }
 
