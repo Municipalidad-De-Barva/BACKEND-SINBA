@@ -2,9 +2,9 @@ const { Router } = require('express');
 const router=Router();
 const dbConnection = require('../config/dbConnection');
 //const daoUsuario = require('./DaoUsuario');
-const daoSol = require('./DaoSolicitud_Patente');
+const daoSolicitud = require('./DaoSolicitud_Patente');
 //const DaoUsu = new daoUsuario();
-const DaoSoli = new daoSol();
+const soli = new daoSolicitud();
 
 const connection = dbConnection();
 
@@ -21,14 +21,18 @@ router.post('/', (req,res)=>{
         dirPropietario&&nomComercial&&actividad&&declaraJura&&
         nomAutorizado&&cedAutorizado){
 
-            DaoSoli.insertar_Solicitud_Patentes(cedulaSolicitante,'Contribuyente',nomSolicitante,"Flores","Estrada",telSolicitante,dirSolicitante,
-            faxSolicitante,correoEleSolicitante,nomPropietario,represLegalPropietario,cedulaJuriPropietario,
-            nomComercial,01,nomAutorizado,cedAutorizado,declaraJura,function(result){
-                res.json('Done');
-                console.log(req.body);
-            }
-                      
-            );
+            soli.insertar_Solicitud_Patentes(cedulaSolicitante,"Contribuyente",nomSolicitante,telSolicitante,dirSolicitante,faxSolicitante,correoEleSolicitante,
+            represLegalSolicitante,cedulaJuriSolicitante,nomPropietario,cedulaJuriPropietario,represLegalPropietario,dirPropietario,nomComercial,actividad,
+            nomAutorizado,cedAutorizado,declaraJura,function(result){
+            
+              console.log(result);
+              soli.listar_Solicitud_Patentes(function(result){
+            
+                console.log(result);
+              
+              });
+            
+            });
 
         
     }else{
