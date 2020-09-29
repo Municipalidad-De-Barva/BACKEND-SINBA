@@ -1,5 +1,3 @@
-const util = require('util');
-const sleep = util.promisify(setTimeout);
 
 const dbConnection = require('../config/dbConnection');
 class DaoUsuario {
