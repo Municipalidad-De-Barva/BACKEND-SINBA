@@ -7,6 +7,25 @@ class DaoContribuyente {
         this.contribuyente = new Array();
         this.DaoUsu = new daoUsuario();
     }
+//Metodo para obtener al contribuyente por medio del ID, se usa para consultar primero si existe dicho registro 
+//para no agregarlo dos veces y evitar el error de choque por la llave primaria.
+    obtener_Contribuyente(PK_ID, callback) {
+        var sql = "SELECT* FROM contribuyente WHERE PK_ID = ?";
+
+        this.connection.query(sql, [PK_ID], function (err, results) {
+            if (err) {
+                throw err;
+            }
+            var mostrarMensaje;
+            if (results.length === 0) {
+                mostrarMensaje = "No se encuentra registrado...";
+            }
+            else {
+                mostrarMensaje = "Si se encuentra registrado...";
+            }
+            return callback(mostrarMensaje);
+        })
+    }
 
     listar_Contribuyentes(callback) {
 
