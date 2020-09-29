@@ -21,25 +21,44 @@ class DaoSolicitud_Patente {
         })
     }
 
-    insertar_Solicitud_Patentes(PK_ID, Tipo, Nombre, Apellido1, Apellido2, Telefono, Direccion,
-        Fax, Correo, Nombre_Propetario, Nombre_Representante_Legal, Cedula_Propetario,
-        Nombre_Comercial_Negocio,FK_Actividad, Nombre_Persona_Autorizada, ID_Persona_Autorizada, Declaracion_Jurada, callback) {
+    insertar_Solicitud_Patentes(
+        //Datos del contribuyente...
+        PK_ID, Tipo, Nombre, Telefono, Direccion, Fax, Correo,
+        //Datos Representante legal del contribuyente
+        Nombre_Representante_Legal_Contribuyente, Cedula_Representante_Legal_Contribuyente,
+        //Datos del propietario
+        Nombre_Propetario, Cedula_Propetario, Direccion_Propietario,
+        //Datos del representante legal del propetario
+        Nombre_Representante_Legal_Propietario,
+        //Datos del negocio.
+        Nombre_Comercial_Negocio, Actividad,
+        //Datos Persona autorizada.
+        Nombre_Persona_Autorizada, ID_Persona_Autorizada,
+        Declaracion_Jurada,
+        callback) {
 
-        this.DaoContri.insertar_Contribuyente(PK_ID, Tipo, Nombre, Apellido1, Apellido2, Telefono,
+
+        this.DaoContri.insertar_Contribuyente(PK_ID, Tipo, Nombre, Telefono,
             Direccion, Fax, Correo, function (result) {
+                var moment = require('moment');
                 const connection = dbConnection();
                 var sql = "INSERT INTO solicitud_patente SET ?";
-
+                var myDate = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+                console.log(myDate);
                 connection.query(sql, {
-                    FK_ID_Contribuyente:PK_ID,
+                    FK_ID_Contribuyente: PK_ID,
+                    Nombre_Representante_Legal_Contribuyente,
+                    Cedula_Representante_Legal_Contribuyente,
                     Nombre_Propetario,
-                    Nombre_Representante_Legal,
                     Cedula_Propetario,
+                    Nombre_Representante_Legal_Propietario,
+                    Direccion_Propietario,
                     Nombre_Comercial_Negocio,
-                    FK_Actividad,
+                    Actividad,
                     Nombre_Persona_Autorizada,
                     ID_Persona_Autorizada,
-                    Declaracion_Jurada
+                    Declaracion_Jurada,
+                    Fecha:myDate
                 }, function (err, results) {
                     if (err) {
                         throw err;
