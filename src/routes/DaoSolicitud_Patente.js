@@ -35,6 +35,8 @@ class DaoSolicitud_Patente {
         //Datos Persona autorizada.
         Nombre_Persona_Autorizada, ID_Persona_Autorizada,
         Declaracion_Jurada,
+        //Atrubuto_Nuevo para el estado de la solicutud de patente nueva.
+        Estado,
         callback) {
 
 
@@ -58,7 +60,8 @@ class DaoSolicitud_Patente {
                     Nombre_Persona_Autorizada,
                     ID_Persona_Autorizada,
                     Declaracion_Jurada,
-                    Fecha:myDate
+                    Fecha:myDate,
+                    Estado
                 }, function (err, results) {
                     if (err) {
                         throw err;
