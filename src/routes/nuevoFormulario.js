@@ -40,7 +40,7 @@ router.post('/', (req,res)=>{
           }*/
 
             soli.insertar_Solicitud_Patentes(cedulaSolicitante,"Contribuyente",nomSolicitante,telSolicitante,dirSolicitante,faxSolicitante,correoEleSolicitante,
-            represLegalSolicitante,cedulaJuriSolicitante,nomPropietario,cedulaJuriPropietario,represLegalPropietario,dirPropietario,nomComercial,actividad,
+            represLegalSolicitante,cedulaJuriSolicitante,nomPropietario,cedulaJuriPropietario,dirPropietario,represLegalPropietario,nomComercial,actividad,
             nomAutorizado,cedAutorizado,declaraJura,"Nuevo",function(result){
             
               console.log(result);
