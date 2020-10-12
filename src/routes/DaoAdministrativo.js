@@ -26,7 +26,7 @@ class DaoAdministrativo{
             else {
                 mostrarMensaje = "Si se encuentra registrado...";
             }
-            return callback(results);
+            return callback(mostrarMensaje);
         })
     }
 
