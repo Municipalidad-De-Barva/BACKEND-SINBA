@@ -1,6 +1,8 @@
 const { Router } = require('express');
 const router=Router();
 const dbConnection = require('../config/dbConnection');
+const daoAdministrativo = require('../routes/DaoAdministrativo');
+const administrativo = new daoAdministrativo();
 
 const connection = dbConnection();
 
@@ -10,6 +12,11 @@ router.post('/', (req,res)=>{
     if(user,pass){
         //ver si se encuentra en la base de datos
         //y hacer el callback
+        //Método para obtener de  la bases de datos al empleado correspondiente.
+        administrativo.obtener_Administrativo_Clave(user, pass, function (result) {
+            console.log(" Imprimiendo los datos del empleado obtenido: ");
+            console.log(result);
+        });
     }else{
         res.status(500).json({error:'Datos insuficientes'});
     }
