@@ -37,3 +37,4 @@ app.use((req, res, next) => {
   app.use(require('./routes/index'));
   app.use('/api/nuevoForm',require('./routes/nuevoFormulario'));
   app.use('/api/admLogIn',require('./routes/logeo'));
+  app.use('/api/newEmp',require('./routes/nuevoEmpleado'));

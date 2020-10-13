@@ -6,21 +6,33 @@ const administrativo = new daoAdministrativo();
 
 const connection = dbConnection();
 
-router.post('/', (req,res)=>{
-    const{user,pass,name,rol,correo}=req.body;  //se mantiene lo de mandar los datos del admin por motivos de seguridad
-    if(user,pass){
-        //ver si se encuentra en la base de datos
-        //y hacer el callback
+const Joi = require(`@hapi/joi`);
 
-        //Método para ingresar a un nuevo empleado.
-        administrativo.insertar_Administrativo(user,"Administrador",name,1,correo,pass,function (result) {
+const schema = Joi.object({
+    user: Joi.string().min(8).required(),
+    pass: Joi.string().min(6).required(),
+    name: Joi.string().min(20).required(),
+    rol: Joi.string().min(1).required().max(1),
+    email: Joi.string().min(6).required().email()
+});
+
+router.post('/', (req,res)=>{
+
+    const { error }=schema.validate(req.body);
+    if(error){
+        res.status(500).send(error.details[0].message);
+    }else{
+        const{user,pass,name,rol,email}=req.body;
+        
+        administrativo.insertar_Administrativo(user,"Administrador",name,rol,email,pass,function (result) {
             console.log(" Resultado de insertar al usuario: ");
             console.log(result);
         });
         
-    }else{
-        res.status(500).json({error:'Solicitud incorrecta'});
+        console.log(user,pass,name,rol,email);
+        res.send('ok');
     }
+    
 });
 
 module.exports=router;
