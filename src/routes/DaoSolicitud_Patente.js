@@ -75,6 +75,25 @@ class DaoSolicitud_Patente {
 
     }
 
+    // Este método llamado obtener_Solicitudes_Nuevas,
+    //Lo que hace es retornar una lista o contenedor con
+    //todas las solicitudes de patente que cuyo estado de la 
+    //bases de datos se encuentre en "Nuevo"...
+
+    obtener_Solicitudes_Nuevas(callback){
+
+        var sql = "SELECT * FROM solicitud_patente where Estado = 'Nuevo' ";
+
+        this.connection.query(sql, function (err, results) {
+            if (err) {
+                throw err;
+            }
+            console.log(results);
+            return callback(results);
+        })
+
+    }
+
 }
 
 module.exports = DaoSolicitud_Patente;
