@@ -60,7 +60,7 @@ class DaoSolicitud_Patente {
                     Nombre_Persona_Autorizada,
                     ID_Persona_Autorizada,
                     Declaracion_Jurada,
-                    Fecha:myDate,
+                    Fecha: myDate,
                     Estado
                 }, function (err, results) {
                     if (err) {
@@ -80,11 +80,29 @@ class DaoSolicitud_Patente {
     //todas las solicitudes de patente que cuyo estado de la 
     //bases de datos se encuentre en "Nuevo"...
 
-    obtener_Solicitudes_Nuevas(callback){
+    obtener_Solicitudes_Nuevas(callback) {
 
         var sql = "SELECT * FROM solicitud_patente where Estado = 'Nuevo' ";
 
         this.connection.query(sql, function (err, results) {
+            if (err) {
+                throw err;
+            }
+            console.log(results);
+            return callback(results);
+        })
+
+    }
+
+    // Este método llamado obtener_Solicitud_Codigo,
+    //Lo que hace es retornar el objeto de la base de datos cuyo PK_Codigo coincide con el que 
+    //viene por paramtero...
+
+    obtener_Solicitud_Codigo(PK_Codigo,callback) {
+
+        var sql = "SELECT * FROM solicitud_patente where PK_Codigo = ? ";
+
+        this.connection.query(sql,[PK_Codigo], function (err, results) {
             if (err) {
                 throw err;
             }
