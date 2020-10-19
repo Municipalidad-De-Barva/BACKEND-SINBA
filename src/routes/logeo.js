@@ -16,7 +16,7 @@ router.post('/', (req,res)=>{
         //Método para obtener de  la bases de datos al empleado correspondiente.
         administrativo.obtener_Administrativo_Clave(user, pass, function (result) {
             console.log(" Imprimiendo los datos del empleado obtenido: ");
-            console.log(result.length);
+            console.log(result);
             if(result.length!=0){
                 res.send('ok');
             }else{
