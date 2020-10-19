@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const { result } = require('underscore');
 const router=Router();
 const dbConnection = require('../config/dbConnection');
 const daoAdministrativo = require('../routes/DaoAdministrativo');
@@ -15,8 +16,15 @@ router.post('/', (req,res)=>{
         //Método para obtener de  la bases de datos al empleado correspondiente.
         administrativo.obtener_Administrativo_Clave(user, pass, function (result) {
             console.log(" Imprimiendo los datos del empleado obtenido: ");
-            console.log(result);
+            console.log(result.length);
+            if(result.length!=0){
+                res.send('ok');
+            }else{
+                res.status(500).json({error:'Datos erroneos'});
+            }
         });
+        
+        
     }else{
         res.status(500).json({error:'Datos insuficientes'});
     }
