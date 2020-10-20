@@ -94,6 +94,49 @@ class DaoSolicitud_Patente {
 
     }
 
+    //--------------------------------------------------//
+    obtener_Solicitudes_Pendientes(callback) {
+
+        var sql = "SELECT * FROM solicitud_patente where Estado = 'Pendiente' ";
+
+        this.connection.query(sql, function (err, results) {
+            if (err) {
+                throw err;
+            }
+            console.log(results);
+            return callback(results);
+        })
+
+    }
+
+    obtener_Solicitudes_Descartados(callback) {
+
+        var sql = "SELECT * FROM solicitud_patente where Estado = 'Descartado' ";
+
+        this.connection.query(sql, function (err, results) {
+            if (err) {
+                throw err;
+            }
+            console.log(results);
+            return callback(results);
+        })
+
+    }
+
+    obtener_Solicitudes_Terminados(callback) {
+
+        var sql = "SELECT * FROM solicitud_patente where Estado = 'Terminado' ";
+
+        this.connection.query(sql, function (err, results) {
+            if (err) {
+                throw err;
+            }
+            console.log(results);
+            return callback(results);
+        })
+
+    }
+
     // Este método llamado obtener_Solicitud_Codigo,
     //Lo que hace es retornar el objeto de la base de datos cuyo PK_Codigo coincide con el que 
     //viene por paramtero...

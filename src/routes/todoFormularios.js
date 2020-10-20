@@ -10,7 +10,7 @@ const connection = dbConnection();
 
 router.get('/', (req,res)=>{     
 
-    soli.obtener_Solicitudes_Nuevas(function(result){
+    soli.listar_Solicitud_Patentes(function(result){
         //console.log(result);
         res.json(result);
     });
@@ -27,6 +27,42 @@ router.get('/selected', (req,res)=>{
     }else{
         res.status(500).json({error:'Datos insuficientes'});
     }       
+});
+
+router.get('/nuevas', (req,res)=>{     
+
+    soli.obtener_Solicitudes_Nuevas(function(result){
+        //console.log(result);
+        res.json(result);
+    });
+    
+});
+
+router.get('/pendientes', (req,res)=>{     
+
+    soli.obtener_Solicitudes_Pendientes(function(result){
+        //console.log(result);
+        res.json(result);
+    });
+    
+});
+
+router.get('/terminados', (req,res)=>{     
+
+    soli.obtener_Solicitudes_Terminados(function(result){
+        //console.log(result);
+        res.json(result);
+    });
+    
+});
+
+router.get('/descartados', (req,res)=>{     
+
+    soli.obtener_Solicitudes_Descartados(function(result){
+        //console.log(result);
+        res.json(result);
+    });
+    
 });
 
 module.exports=router;
