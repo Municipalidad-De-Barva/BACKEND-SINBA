@@ -155,6 +155,41 @@ class DaoSolicitud_Patente {
 
     }
 
+    actualizar_Datos_Revision(PK_Codigo,
+        Requisitos_Articulo9_Muni_Barva,
+        Inscrito_CSS_Se_Encuentra_al_dia,
+        Inscrito_FODESAF,
+        Exoneracion_y_Poliza_Riesgo_de_trabajo_del_INS,
+        Timbre_Fiscal,
+        Formulario_Solicitud_Patente_Firmada,
+        Declaracion_Jurada_Firmada,
+        Al_Dia_Impuestos_Municipales,
+        Contrato_Arrendamiento,
+        Estado,callback){
+
+            var sql = "UPDATE solicitud_patente SET Requisitos_Articulo9_Muni_Barva = ? ,Inscrito_CSS_Se_Encuentra_al_dia = ? ,Inscrito_FODESAF = ? ,Exoneracion_y_Poliza_Riesgo_de_trabajo_del_INS = ? ,Timbre_Fiscal = ? ,Formulario_Solicitud_Patente_Firmada = ? ,Declaracion_Jurada_Firmada = ? ,Al_Dia_Impuestos_Municipales = ? ,Contrato_Arrendamiento = ? ,Estado = ? Where PK_Codigo = ? ";
+
+            this.connection.query(sql,[
+                Requisitos_Articulo9_Muni_Barva,
+                Inscrito_CSS_Se_Encuentra_al_dia,
+                Inscrito_FODESAF,
+                Exoneracion_y_Poliza_Riesgo_de_trabajo_del_INS,
+                Timbre_Fiscal,
+                Formulario_Solicitud_Patente_Firmada,
+                Declaracion_Jurada_Firmada,
+                Al_Dia_Impuestos_Municipales,
+                Contrato_Arrendamiento,
+                Estado,
+                PK_Codigo], function (err, results) {
+                if (err) {
+                    throw err;
+                }
+                console.log(results);
+                return callback(results);
+            })
+
+        }
+
 }
 
 module.exports = DaoSolicitud_Patente;
