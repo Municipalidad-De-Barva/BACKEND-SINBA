@@ -17,4 +17,16 @@ router.get('/', (req,res)=>{
     
 });
 
+router.get('/selected', (req,res)=>{ 
+    const{codigo}=req.body;
+    if(codigo){
+        soli.obtener_Solicitud_Codigo(codigo,function(result){
+            //console.log(result);
+            res.json(result);
+        });
+    }else{
+        res.status(500).json({error:'Datos insuficientes'});
+    }       
+});
+
 module.exports=router;
