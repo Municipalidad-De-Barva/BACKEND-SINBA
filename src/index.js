@@ -38,3 +38,4 @@ app.use((req, res, next) => {
   app.use('/api/nuevoForm',require('./routes/nuevoFormulario'));
   app.use('/api/admLogIn',require('./routes/logeo'));
   app.use('/api/newEmp',require('./routes/nuevoEmpleado'));
+  app.use('/api/allNForms',require('./routes/todoFormularios'));
