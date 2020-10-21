@@ -27,6 +27,24 @@ class DaoContribuyente {
         })
     }
 
+    obtener_ContribuyenteID(PK_ID, callback) {
+        var sql = "SELECT* FROM contribuyente WHERE PK_ID = ?";
+
+        this.connection.query(sql, [PK_ID], function (err, results) {
+            if (err) {
+                throw err;
+            }
+            var mostrarMensaje;
+            if (results.length === 0) {
+                mostrarMensaje = "No se encuentra registrado...";
+            }
+            else {
+                mostrarMensaje = "Si se encuentra registrado...";
+            }
+            return callback(results);
+        })
+    }
+
     listar_Contribuyentes(callback) {
 
         var sql = "SELECT * FROM contribuyente";
