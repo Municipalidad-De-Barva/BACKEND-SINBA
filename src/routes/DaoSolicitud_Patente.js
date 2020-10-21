@@ -178,7 +178,7 @@ class DaoSolicitud_Patente {
         Estado,callback){
 
             var sql = "UPDATE solicitud_patente SET Requisitos_Articulo9_Muni_Barva = ? ,Inscrito_CSS_Se_Encuentra_al_dia = ? ,Inscrito_FODESAF = ? ,Exoneracion_y_Poliza_Riesgo_de_trabajo_del_INS = ? ,Timbre_Fiscal = ? ,Formulario_Solicitud_Patente_Firmada = ? ,Declaracion_Jurada_Firmada = ? ,Al_Dia_Impuestos_Municipales = ? ,Contrato_Arrendamiento = ? ,Estado = ? Where PK_Codigo = ? ";
-
+            console.log(PK_Codigo);
             this.connection.query(sql,[
                 Requisitos_Articulo9_Muni_Barva,
                 Inscrito_CSS_Se_Encuentra_al_dia,
