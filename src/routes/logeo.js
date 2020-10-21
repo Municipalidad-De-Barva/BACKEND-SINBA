@@ -18,7 +18,7 @@ router.post('/', (req,res)=>{
             console.log(" Imprimiendo los datos del empleado obtenido: ");
             console.log(result);
             if(result.length!=0){
-                res.send('ok');
+                res.json('ok');
             }else{
                 res.status(500).json({error:'Datos erroneos'});
             }
