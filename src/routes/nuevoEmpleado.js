@@ -9,9 +9,9 @@ const connection = dbConnection();
 const Joi = require(`@hapi/joi`);
 
 const schema = Joi.object({
-    user: Joi.string().min(8).required(),
+    user: Joi.string().min(9).required(),
     pass: Joi.string().min(6).required().max(256),
-    name: Joi.string().min(20).required(),
+    name: Joi.string().min(10).required(),
     rol: Joi.string().min(1).required().max(1),
     email: Joi.string().min(6).required().email()
 });
