@@ -40,3 +40,4 @@ app.use((req, res, next) => {
   app.use('/api/newEmp',require('./routes/nuevoEmpleado'));
   app.use('/api/allNForms',require('./routes/todoFormularios'));
   app.use('/api/EspForm',require('./routes/todoFormularios'));
+  app.use('/api/revision',require('./routes/guardaRevision'));

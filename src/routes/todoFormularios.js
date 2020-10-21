@@ -46,7 +46,7 @@ router.post("/selected", (req, res) => {
 });
 
 router.get("/nuevas", (req, res) => {
-  soli.obtener_Solicitudes_Nuevas(function (result) {
+  soli.obtener_Solicitudes_NuevasEsp(function (result) {
     //console.log(result);
     res.json(result);
   });
