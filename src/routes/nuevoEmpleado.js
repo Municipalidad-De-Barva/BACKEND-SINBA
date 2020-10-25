@@ -13,7 +13,8 @@ const schema = Joi.object({
     pass: Joi.string().min(6).required().max(256),
     name: Joi.string().min(10).required(),
     rol: Joi.string().min(1).required().max(1),
-    email: Joi.string().min(6).required().email()
+    email: Joi.string().min(6).required().email(),
+    Tipo_Identificacion: Joi.string().min(1).required().max(1)
 });
 
 router.post('/', (req,res)=>{
@@ -23,9 +24,9 @@ router.post('/', (req,res)=>{
         res.status(500).send(error.details[0].message);
         console.log(error.details[0].message);
     }else{
-        const{user,pass,name,rol,email}=req.body;
+        const{user,pass,name,rol,email,Tipo_Identificacion}=req.body;
         
-        administrativo.insertar_Administrativo(user,"Administrador",name,rol,email,pass,function (result) {
+        administrativo.insertar_Administrativo(user,"Administrador",name,rol,email,pass,Tipo_Identificacion,function (result) {
             console.log(" Resultado de insertar al usuario: ");
             console.log(result);
         });
