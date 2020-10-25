@@ -48,7 +48,7 @@ class DaoAdministrativo{
         })
     }
 
-    insertar_Administrativo(PK_ID, Tipo, Nombre, FK_Rol, Correo, Clave,callback) {
+    insertar_Administrativo(PK_ID, Tipo, Nombre, FK_Rol, Correo, Clave,Tipo_Identificacion,callback) {
         this.obtener_Administrativo(PK_ID, function (result) {
             if (result === "No se encuentra registrado...") {
              const DaoUsu = new daoUsuario();
@@ -61,7 +61,8 @@ class DaoAdministrativo{
                         Nombre,
                         FK_Rol,
                         Correo,
-                        Clave
+                        Clave,
+                        Tipo_Identificacion
                     }, function (err, results) {
                         if (err) {
                             throw err;
