@@ -29,8 +29,12 @@ router.post('/', (req,res)=>{
     }else{
 
        const{codigoSolicitud,notInfoForm,insCCSS,insFODESAF,exonePoliRiesgo,declJura,timbFisc,impuMunic}=req.body;
-        
-        soli.actualizar_Datos_Revision(codigoSolicitud,"1",insCCSS,insFODESAF,exonePoliRiesgo,timbFisc,"0",declJura,impuMunic,"0","Terminado",function (result) {
+       let completado="Pendiente";
+       console.log(req.body);
+        if(notInfoForm==="1"&&insCCSS==="1"&&insFODESAF==="1"&&exonePoliRiesgo==="1"&&declJura==="1"&&timbFisc==="1"&&impuMunic==="1"){
+            completado="Terminado";
+        }
+        soli.actualizar_Datos_Revision(codigoSolicitud,notInfoForm,insCCSS,insFODESAF,exonePoliRiesgo,timbFisc,"0",declJura,impuMunic,"0",completado,function (result) {
             console.log(" Resultado de insertar al usuario: ");
             console.log(result);
             res.json('ok');
