@@ -14,7 +14,7 @@ router.post('/', (req, res) => {
         //ver si se encuentra en la base de datos
         //y hacer el callback
         //Método para obtener de  la bases de datos al empleado correspondiente.
-        if(user.length!=0 && user.length!=0){
+        if(user.length!=0 && pass.length!=0){
         administrativo.obtener_Administrativo_Clave(user, pass, function (result) {
             console.log(" Imprimiendo los datos del empleado obtenido: ");
             console.log(result);

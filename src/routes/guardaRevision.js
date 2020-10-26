@@ -9,7 +9,7 @@ const connection = dbConnection();
 const Joi = require(`@hapi/joi`);
 
 const schema = Joi.object({
-    codigoSolicitud: Joi.string().min(1).required(),
+    codigoSolicitud: Joi.number().min(1).required(),
     notInfoForm: Joi.string().min(1).required(),
     insCCSS: Joi.string().min(1).required(),
     insFODESAF: Joi.string().min(1).required(),
