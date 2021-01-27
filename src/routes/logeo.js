@@ -4,10 +4,11 @@ const router = Router();
 const dbConnection = require('../config/dbConnection');
 const daoAdministrativo = require('../routes/DaoAdministrativo');
 const administrativo = new daoAdministrativo();
-
+const jwt = require("jsonwebtoken");
+const config = require("../config/config");
 const connection = dbConnection();
 
-
+//creando un token cuando inicie la seccion el token se guardara en el localstorage
 router.post('/', (req, res) => {
     const { user, pass } = req.body;
     if (user, pass) {
@@ -19,7 +20,13 @@ router.post('/', (req, res) => {
             console.log(" Imprimiendo los datos del empleado obtenido: ");
             console.log(result);
             if (result.length != 0) {
-                res.json('ok');
+                //res.json('ok');
+                //creando token
+                const token = jwt.sign({ id: user }, config.secret, {
+                    expiresIn: 60 * 5,//token es valido por cinco minutos
+                  });
+                  console.log(token);
+                  res.status(200).json({ auth: true, token });
             }
             else {
                 res.status(500).json({ error: 'Datos erroneos' });
@@ -32,10 +39,10 @@ router.post('/', (req, res) => {
     if(user.length==0 && pass.length==0){
         res.status(500).json({ error: 'ambos nulos' });
     } 
-    if (user.length==0) {
+    else if (user.length==0) {
         res.status(500).json({ error: 'usuario nulo' });
     }
-    if (pass.length==0) {
+    else if (pass.length==0) {
         res.status(500).json({ error: 'pass nulo' });
     }
     

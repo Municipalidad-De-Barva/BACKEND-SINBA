@@ -1,5 +1,5 @@
 {
-  "name": "SINBA",
+  "name": "backend-sinba",
   "version": "1.0.0",
   "description": ":classical_building: [Universidad Nacional de Costa Rica(UNA).](https://www.una.ac.cr/ \"Pagina Principal de la Universidad Nacional\")",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Municipalidad-De-Barva/SINBA.git"
+    "url": "git+https://github.com/Municipalidad-De-Barva/BACKEND-SINBA.git"
   },
   "keywords": [],
   "author": "",
@@ -22,9 +22,11 @@
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.0",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
