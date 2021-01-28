@@ -1,5 +1,5 @@
 module.exports = {
-    secret: "mysecretkey",
-    port: 3000,
-  };
-  
+  secret: "my-secretkey-Sinb@",
+  port1: 4001,
+  port2: 4002,
+};
