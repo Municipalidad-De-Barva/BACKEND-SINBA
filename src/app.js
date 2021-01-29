@@ -13,6 +13,11 @@ app.set("json spaces", 2);
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+const corsOptions = {
+  // origin: "http://localhost:3000",
+};
+app.use(cors(corsOptions));
+app.use(helmet());
 
 app.use((req, res, next) => {
   res.header({
