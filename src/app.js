@@ -5,20 +5,35 @@ import helmet from "helmet";
 import config from "./config/config";
 const app = express();
 
-//settings
-app.set("port", process.env.PORT || config.port1 || config.port2);
+//settings express
+app.set("port", config.port);
 app.set("json spaces", 2);
 
 //middlewares
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-const corsOptions = {
-  // origin: "http://localhost:3000",
-};
-app.use(cors(corsOptions));
-app.use(helmet());
 
+//settings cors
+const whitelist = [`http://localhost:${config.portFrontEnd}`];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+
+app.get("/", cors(corsOptions), function (req, res, next) {
+  res.json({ msg: "This is CORS-enabled for a whitelisted domain." });
+});
+
+app.use(cors(corsOptions));
+
+/*
 app.use((req, res, next) => {
   res.header({
     "Access-Control-Allow-Origin": "*",
@@ -29,6 +44,9 @@ app.use((req, res, next) => {
   });
   next();
 });
+*/
+
+app.use(helmet());
 
 //routes
 app.use(require("./routes/index.routes"));

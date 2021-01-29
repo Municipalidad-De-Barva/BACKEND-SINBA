@@ -26,6 +26,7 @@ class DaoAdministrativo {
   }
 
   obtener_Administrativo(PK_ID, callback) {
+    
     var sql = "SELECT* FROM administrativo WHERE PK_ID = ? ";
 
     this.connection.query(sql, [PK_ID], function (err, results) {

@@ -12,6 +12,3 @@ INSERT INTO `inspecciones_barva`.`administrativo` (`PK_ID`, `Nombre`, `Apellido1
 INSERT INTO `inspecciones_barva`.`administrativo` (`PK_ID`, `Nombre`, `Apellido1`, `Apellido2`, `FK_Rol`, `Telefono`, `Correo`, `Clave`) VALUES ('444444444', 'Luis Fernando', 'Villegas', 'Campos', '1', '83044339', 'luchoavak@gmail.com', '123456');
 
 --Tabla Contribuyente
-
---Tabla  
---Tabla 
