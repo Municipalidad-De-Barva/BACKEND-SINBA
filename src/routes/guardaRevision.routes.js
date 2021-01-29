@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const dbConnection = require("../config/dbConnection");
-const DaoSolicitud_Patente = require("../routes/DaoSolicitud_Patente");
+const DaoSolicitud_Patente = require("../database/DaoSolicitud_Patente");
 const soli = new DaoSolicitud_Patente();
 
 const connection = dbConnection();

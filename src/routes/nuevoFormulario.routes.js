@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const dbConnection = require("../config/dbConnection");
 //const daoUsuario = require('./DaoUsuario');
-const daoSolicitud = require("./DaoSolicitud_Patente");
+const daoSolicitud = require("../database/DaoSolicitud_Patente");
 //const DaoUsu = new daoUsuario();
 const soli = new daoSolicitud();
 

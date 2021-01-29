@@ -1,5 +1,8 @@
 module.exports = {
   secret: "my-secretkey-Sinb@",
-  port1: 4001,
-  port2: 4002,
+  port1: 3001,
+  port2: 4001,
 };
+/**
+ * Este archivo contiene configuraciones sobre el proyecto, como claves, puertos, etc
+ */

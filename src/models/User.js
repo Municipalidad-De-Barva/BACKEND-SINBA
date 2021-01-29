@@ -1,10 +1,12 @@
 // objeto de usuario tendra la informacion del usuario que esta en seccion
-const bcrypt = require("bcryptjs");
+import bcrypt from "bcryptjs";
+  class User {
 
-function User(id, email, password, firtName, lastName) {
-  this.id = id;
-  this.email = email;
-  this.password = password;
-  this.firtName = firtName;
-  this.lastName = lastName;
+  constructor(id,password) {
+    this.id = id;
+    this.email = '';
+    this.password = password;
+    this.firtName = '';
+    this.lastName = '';
+  }
 }

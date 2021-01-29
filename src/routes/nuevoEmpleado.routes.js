@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const dbConnection = require("../config/dbConnection");
-const daoAdministrativo = require("../routes/DaoAdministrativo");
+const daoAdministrativo = require("../database/DaoAdministrativo");
 const administrativo = new daoAdministrativo();
 
 const connection = dbConnection();

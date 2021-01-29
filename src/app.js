@@ -2,11 +2,11 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
-import config from './config/config';
+import config from "./config/config";
 const app = express();
 
 //settings
-app.set("port", config.port1|| config.port2);
+app.set("port", process.env.PORT || config.port1 || config.port2);
 app.set("json spaces", 2);
 
 //middlewares
@@ -26,12 +26,12 @@ app.use((req, res, next) => {
 });
 
 //routes
-app.use(require("./routes/index"));
-app.use("/api/nuevoForm", require("./routes/nuevoFormulario"));
-app.use("/api/admLogIn", require("./routes/logeo"));
-app.use("/api/newEmp", require("./routes/nuevoEmpleado"));
-app.use("/api/allNForms", require("./routes/todoFormularios"));
-app.use("/api/EspForm", require("./routes/todoFormularios"));
-app.use("/api/revision", require("./routes/guardaRevision"));
+app.use(require("./routes/index.routes"));
+app.use("/api/nuevoForm", require("./routes/nuevoFormulario.routes"));
+app.use("/api/auth", require("./routes/auth.routes"));
+app.use("/api/newEmp", require("./routes/nuevoEmpleado.routes"));
+app.use("/api/allNForms", require("./routes/todoFormularios.routes"));
+app.use("/api/EspForm", require("./routes/todoFormularios.routes"));
+app.use("/api/revision", require("./routes/guardaRevision.routes"));
 
 export default app;
