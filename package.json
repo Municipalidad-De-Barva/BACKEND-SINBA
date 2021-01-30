@@ -1,7 +1,7 @@
 {
   "name": "backend-sinba",
   "version": "1.0.0",
-  "description": ":classical_building: [Universidad Nacional de Costa Rica(UNA).](https://www.una.ac.cr/ \"Pagina Principal de la Universidad Nacional\")",
+  "description": "Proyecto del curso Ingenieria de Sistemas de la carrera Ingenieria en Sistemas de Informacion, Universidad Nacional de Costa Rica(UNA).https://www.una.ac.cr, crear un proyecto de sistemas de patentes para la Municipalidad de Barva",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js --exec babel-node",
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/Municipalidad-De-Barva/BACKEND-SINBA.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Bryan Sanchez Brenes. Luis Fernando Villegas Campos. Carlos Andrés Naranjo Bonilla. Tannya Melisa Hibbert Morales.",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Municipalidad-De-Barva/SINBA/issues"

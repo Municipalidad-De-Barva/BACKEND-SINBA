@@ -3,7 +3,10 @@ const router = Router();
 
 //routes
 router.get("/", (req, res) => {
-  res.json({ Tittle: "Pagina Principal" });
+  res.json({
+    Tittle: "Pagina Principal",
+    message: "API SINBA",
+  });
 });
 
 router.post("/", (req, res) => {
