@@ -1,5 +1,5 @@
-const { Router } = require("express");
-const { object } = require("underscore");
+const {Router} = require("express");
+const {object} = require("underscore");
 const router = Router();
 const dbConnection = require("../config/dbConnection");
 const DaoContribuyente = require("../database/DaoContribuyente");
@@ -18,32 +18,31 @@ router.get("/", (req, res) => {
 });
 
 router.post("/selected", (req, res) => {
-  const { codigo } = req.body;
+  const {codigo} = req.body;
   if (codigo) {
     soli.obtener_Solicitud_Codigo(codigo, function (result) {
       //console.log(result[0].FK_ID_Contribuyente);
       //res.json(result);
-      contri.obtener_ContribuyenteID(
-        result[0].FK_ID_Contribuyente,
-        function (resu) {
-          var myobj = new object();
+      contri.obtener_ContribuyenteID(result[0].FK_ID_Contribuyente, function (
+        resu
+      ) {
+        var myobj = new object();
 
-          myobj = result[0];
-          myobj.Nombre = resu[0].Nombre;
-          myobj.Telefono = resu[0].Telefono;
-          myobj.Numero_Finca = resu[0].Numero_Finca;
-          myobj.Direccion = resu[0].Direccion;
-          myobj.Fax = resu[0].Fax;
-          myobj.Correo = resu[0].Correo;
-          var arr = [myobj];
-          console.log("asasasasasasasasasasasasasaaaaaaasasasasasasa");
-          console.log(myobj);
-          res.json(arr);
-        }
-      );
+        myobj = result[0];
+        myobj.Nombre = resu[0].Nombre;
+        myobj.Telefono = resu[0].Telefono;
+        myobj.Numero_Finca = resu[0].Numero_Finca;
+        myobj.Direccion = resu[0].Direccion;
+        myobj.Fax = resu[0].Fax;
+        myobj.Correo = resu[0].Correo;
+        var arr = [myobj];
+        console.log("asasasasasasasasasasasasasaaaaaaasasasasasasa");
+        console.log(myobj);
+        res.json(arr);
+      });
     });
   } else {
-    res.status(500).json({ error: "Datos insuficientes" });
+    res.status(500).json({error: "Datos insuficientes"});
   }
 });
 

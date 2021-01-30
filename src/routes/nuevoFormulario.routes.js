@@ -1,4 +1,4 @@
-const { Router } = require("express");
+const {Router} = require("express");
 const router = Router();
 const dbConnection = require("../config/dbConnection");
 //const daoUsuario = require('./DaoUsuario');
@@ -86,7 +86,7 @@ router.post("/", (req, res) => {
       }
     );
   } else {
-    res.status(500).json({ error: "Datos insuficientes" });
+    res.status(500).json({error: "Datos insuficientes"});
   }
 });
 

@@ -13,7 +13,7 @@ app.set("pkg", pkg);
 
 //middlewares
 app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 //settings cors
@@ -35,13 +35,14 @@ const corsOptions = {
 };
 
 app.get("/", cors(corsOptions), function (req, res, next) {
-  res.json({ msg: "This is CORS-enabled for a whitelisted domain.",
-  Tittle: "Sistema de Patentes MUnicipalidad de Barva de Heredia.",
-  name: app.get("pkg").name,
-  version: app.get("pkg").version,
-  description: app.get("pkg").description,
-  author: app.get("pkg").author,
-});
+  res.json({
+    msg: "This is CORS-enabled for a whitelisted domain.",
+    Tittle: "Sistema de Patentes MUnicipalidad de Barva de Heredia.",
+    name: app.get("pkg").name,
+    version: app.get("pkg").version,
+    description: app.get("pkg").description,
+    author: app.get("pkg").author,
+  });
 });
 
 app.use(cors(corsOptions));
@@ -61,7 +62,7 @@ app.use((req, res, next) => {
 app.use(helmet());
 
 //routes
-app.use("/api",require("./routes/index.routes"));
+app.use("/api", require("./routes/index.routes"));
 app.use("/api/nuevoForm", require("./routes/nuevoFormulario.routes"));
 app.use("/api/auth", require("./routes/auth.routes"));
 app.use("/api/newEmp", require("./routes/nuevoEmpleado.routes"));

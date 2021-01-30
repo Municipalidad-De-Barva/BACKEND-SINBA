@@ -1,4 +1,4 @@
-const { Router } = require("express");
+const {Router} = require("express");
 const router = Router();
 const dbConnection = require("../config/dbConnection");
 const DaoSolicitud_Patente = require("../database/DaoSolicitud_Patente");
@@ -22,7 +22,7 @@ const schema = Joi.object({
 router.post("/", (req, res) => {
   console.log(req.body);
 
-  const { error } = schema.validate(req.body);
+  const {error} = schema.validate(req.body);
   if (error) {
     res.status(500).send(error.details[0].message);
     console.log(error.details[0].message);

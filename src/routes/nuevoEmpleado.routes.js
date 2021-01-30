@@ -1,4 +1,4 @@
-const { Router } = require("express");
+const {Router} = require("express");
 const router = Router();
 const dbConnection = require("../config/dbConnection");
 const daoAdministrativo = require("../database/DaoAdministrativo");
@@ -18,12 +18,12 @@ const schema = Joi.object({
 });
 
 router.post("/", (req, res) => {
-  const { error } = schema.validate(req.body);
+  const {error} = schema.validate(req.body);
   if (error) {
     res.status(500).send(error.details[0].message);
     console.log(error.details[0].message);
   } else {
-    const { user, pass, name, rol, email, Tipo_Identificacion } = req.body;
+    const {user, pass, name, rol, email, Tipo_Identificacion} = req.body;
 
     administrativo.insertar_Administrativo(
       user,
