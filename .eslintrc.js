@@ -16,7 +16,11 @@ module.exports = {
 };
 
 /*
-esta linia de codigo, activa eslint para comprobar codigo antes de hacer commit en git, la linea se inserta en el package.json en husky, se elimino por que presenta problemas
-"pre-commit": "npx prettier --write src/* && npx eslint --fix src/*"
+estas lineas van en el package.json para activar el precommit, para habilitar estandares de hacer un commit aplique los cambios automaticamente, por el momento se desabilita.
+"husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "npx prettier --write src/* && npx eslint --fix src/*"
+    }
+  }
 */
-//
