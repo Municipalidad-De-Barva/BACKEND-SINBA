@@ -1,9 +1,10 @@
 
 --Tabla rol
-INSERT INTO `inspecciones_barva`.`rol` (`FK_Codigo`, `Descripcion`) VALUES ('1','Tecnologia de Información');
+INSERT INTO `inspecciones_barva`.`rol` (`FK_Codigo`, `Descripcion`) VALUES ('1','Tecnologías de Información');
 INSERT INTO `inspecciones_barva`.`rol` (`FK_Codigo`, `Descripcion`) VALUES ('2', 'Secretariado');
-INSERT INTO `inspecciones_barva`.`rol` (`FK_Codigo`, `Descripcion`) VALUES ('3', 'Jefe de Patentes');
-INSERT INTO `inspecciones_barva`.`rol` (`FK_Codigo`, `Descripcion`) VALUES ('4', 'Inspector');
+INSERT INTO `inspecciones_barva`.`rol` (`FK_Codigo`, `Descripcion`) VALUES ('3', 'Jefe/a de Patentes');
+INSERT INTO `inspecciones_barva`.`rol` (`FK_Codigo`, `Descripcion`) VALUES ('4', 'Inspector/a');
+INSERT INTO `inspecciones_barva`.`rol` (`FK_Codigo`, `Descripcion`) VALUES ('5', 'Contribuyente');
 
 -- Tabla administrativo
 INSERT INTO `inspecciones_barva`.`administrativo` (`PK_ID`, `Nombre`, `Apellido1`, `Apellido2`, `FK_Rol`, `Telefono`, `Correo`, `Clave`) VALUES ('304760577', 'Bryan Jesús', 'Sánchez', 'Brenes', '1', '71464730', 'bryan.jsb.1801@gmail.com', '123456');

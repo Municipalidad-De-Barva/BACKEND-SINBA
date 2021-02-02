@@ -1,5 +1,4 @@
-const mysql = require("mysql");
-
+import mysql from "mysql";
 module.exports = () => {
   return mysql.createConnection({
     host: "localhost",
@@ -8,3 +7,5 @@ module.exports = () => {
     database: "inspecciones_barva",
   });
 };
+
+export default mysql;

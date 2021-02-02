@@ -10,4 +10,4 @@ router.post("/signin", authCtrl.signIn);
 
 router.get("/signout", authCtrl.signOut);
 
-module.exports = router;
+export default router;

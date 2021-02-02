@@ -23,7 +23,6 @@ const whitelist = [
 ];
 
 const corsOptions = {
-  origin: "*",
   //no eliminar
   /*origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -37,7 +36,8 @@ const corsOptions = {
 app.get("/", cors(corsOptions), function (req, res, next) {
   res.json({
     msg: "This is CORS-enabled for a whitelisted domain.",
-    Tittle: "Sistema de Patentes MUnicipalidad de Barva de Heredia.",
+    whitelist,
+    Tittle: "Sistema de Patentes Municipalidad de Barva de Heredia.",
     name: app.get("pkg").name,
     version: app.get("pkg").version,
     description: app.get("pkg").description,
@@ -62,12 +62,22 @@ app.use((req, res, next) => {
 app.use(helmet());
 
 //routes
-app.use("/api", require("./routes/index.routes"));
-app.use("/api/nuevoForm", require("./routes/nuevoFormulario.routes"));
-app.use("/api/auth", require("./routes/auth.routes"));
-app.use("/api/newEmp", require("./routes/nuevoEmpleado.routes"));
-app.use("/api/allNForms", require("./routes/todoFormularios.routes"));
-app.use("/api/EspForm", require("./routes/todoFormularios.routes"));
-app.use("/api/revision", require("./routes/guardaRevision.routes"));
+import indexroutes from "./routes/index.routes";
+import nuevoFormulario from "./routes/nuevoFormulario.routes";
+import auth from "./routes/auth.routes";
+import nuevoEmpleado from "./routes/nuevoEmpleado.routes";
+import todoFormularios from "./routes/todoFormularios.routes";
+import guardaRevision from "./routes/guardaRevision.routes";
+import role from "./routes/role.routes";
+
+app.use("/api", indexroutes);
+app.use("/api/nuevoForm", nuevoFormulario);
+app.use("/api/auth", auth);
+app.use("/api/newEmp", nuevoEmpleado);
+app.use("/api/allNForms", todoFormularios);
+app.use("/api/EspForm", todoFormularios);
+app.use("/api/revision", guardaRevision);
+
+app.use("/api/role", role);
 
 export default app;
