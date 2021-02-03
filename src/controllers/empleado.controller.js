@@ -1,9 +1,5 @@
-import {Router} from "express";
-const router = Router();
-
 import daoAdministrativo from "../database/DaoAdministrativo";
-let administrativo = new daoAdministrativo();
-
+const administrativo = new daoAdministrativo();
 import Joi from "@hapi/joi";
 
 const schema = Joi.object({
@@ -15,7 +11,9 @@ const schema = Joi.object({
   Tipo_Identificacion: Joi.string().min(1).required().max(1),
 });
 
-router.post("/", (req, res) => {
+export const crearUsuario = async (req, res) => {
+  //return res.status(200).json({message: "Crear usuario"});
+
   const {error} = schema.validate(req.body);
   if (error) {
     res.status(500).send(error.details[0].message);
@@ -32,14 +30,11 @@ router.post("/", (req, res) => {
       pass,
       Tipo_Identificacion,
       function (result) {
-        console.log(" Resultado de insertar al usuario: ");
-        console.log(result);
+        console.log(" Resultado de insertar al usuario: ", result);
       }
     );
 
     console.log(user, pass, name, rol, email);
     res.json("ok");
   }
-});
-
-export default router;
+};

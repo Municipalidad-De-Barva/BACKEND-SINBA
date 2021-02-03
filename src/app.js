@@ -43,6 +43,7 @@ app.get("/", cors(corsOptions), function (req, res, next) {
     description: app.get("pkg").description,
     author: app.get("pkg").author,
   });
+  next();
 });
 
 app.use(cors(corsOptions));
@@ -65,7 +66,7 @@ app.use(helmet());
 import indexroutes from "./routes/index.routes";
 import nuevoFormulario from "./routes/nuevoFormulario.routes";
 import auth from "./routes/auth.routes";
-import nuevoEmpleado from "./routes/nuevoEmpleado.routes";
+import empleado from "./routes/empleado.routes";
 import todoFormularios from "./routes/todoFormularios.routes";
 import guardaRevision from "./routes/guardaRevision.routes";
 import role from "./routes/role.routes";
@@ -73,7 +74,7 @@ import role from "./routes/role.routes";
 app.use("/api", indexroutes);
 app.use("/api/nuevoForm", nuevoFormulario);
 app.use("/api/auth", auth);
-app.use("/api/newEmp", nuevoEmpleado);
+app.use("/api/empleado", empleado);
 app.use("/api/allNForms", todoFormularios);
 app.use("/api/EspForm", todoFormularios);
 app.use("/api/revision", guardaRevision);
