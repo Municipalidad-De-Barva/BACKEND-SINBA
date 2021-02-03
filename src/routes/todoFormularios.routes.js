@@ -1,14 +1,11 @@
 const {Router} = require("express");
 const {object} = require("underscore");
 const router = Router();
-const dbConnection = require("../config/dbConnection");
-const DaoContribuyente = require("../database/DaoContribuyente");
-const daoSolicitud = require("../database/DaoSolicitud_Patente");
-//const DaoUsu = new daoUsuario();
+import DaoContribuyente from "../database/DaoContribuyente";
+import daoSolicitud from "../database/DaoSolicitud_Patente";
+
 const soli = new daoSolicitud();
 const contri = new DaoContribuyente();
-
-const connection = dbConnection();
 
 router.get("/", (req, res) => {
   soli.listar_Solicitud_Patentes(function (result) {
@@ -74,4 +71,4 @@ router.get("/descartados", (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;

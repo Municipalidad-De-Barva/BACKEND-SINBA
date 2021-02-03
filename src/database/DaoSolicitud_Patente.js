@@ -1,8 +1,9 @@
-const dbConnection = require("../config/dbConnection");
-const daoUsuario = require("./DaoContribuyente");
-class DaoSolicitud_Patente {
+import dbConnection from "../config/dbConnection";
+import daoUsuario from "./DaoContribuyente";
+import dao from "./Dao";
+export default class DaoSolicitud_Patente extends dao {
   constructor() {
-    this.connection = dbConnection();
+    super();
     this.contribuyente = new Array();
     this.DaoContri = new daoUsuario();
   }
@@ -120,6 +121,7 @@ class DaoSolicitud_Patente {
       return callback(results);
     });
   }
+
   //--------------------------------------------------//
   obtener_Solicitudes_Pendientes(callback) {
     var sql = "SELECT * FROM solicitud_patente where Estado = 'Pendiente' ";
@@ -215,5 +217,3 @@ class DaoSolicitud_Patente {
     );
   }
 }
-
-module.exports = DaoSolicitud_Patente;

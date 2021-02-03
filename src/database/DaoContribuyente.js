@@ -1,8 +1,9 @@
-const dbConnection = require("../config/dbConnection");
-const daoUsuario = require("./DaoUsuario");
-class DaoContribuyente {
+import dbConnection from "../config/dbConnection";
+import daoUsuario from "./DaoUsuario";
+import dao from "./Dao";
+export default class DaoContribuyente extends dao {
   constructor() {
-    this.connection = dbConnection();
+    super();
     this.contribuyente = new Array();
     this.DaoUsu = new daoUsuario();
   }
@@ -32,12 +33,7 @@ class DaoContribuyente {
       if (err) {
         throw err;
       }
-      var mostrarMensaje;
-      if (results.length === 0) {
-        mostrarMensaje = "No se encuentra registrado...";
-      } else {
-        mostrarMensaje = "Si se encuentra registrado...";
-      }
+
       return callback(results);
     });
   }
@@ -96,5 +92,3 @@ class DaoContribuyente {
     });
   }
 }
-
-module.exports = DaoContribuyente;

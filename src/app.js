@@ -7,7 +7,7 @@ import pkg from "../package.json";
 
 //settings express
 const app = express();
-app.set("port", config.port);
+app.set("port", config.PORT);
 app.set("json spaces", 2);
 app.set("pkg", pkg);
 
@@ -18,7 +18,7 @@ app.use(express.json());
 
 //settings cors
 const whitelist = [
-  `http://localhost:${config.portFrontEnd}`,
+  `http://localhost:${config.PORTFRONTEND}`,
   "http://localhost:8080",
 ];
 

@@ -1,12 +1,7 @@
-const {Router} = require("express");
+import {Router} from "express";
 const router = Router();
-const dbConnection = require("../config/dbConnection");
-//const daoUsuario = require('./DaoUsuario');
-const daoSolicitud = require("../database/DaoSolicitud_Patente");
-//const DaoUsu = new daoUsuario();
+import daoSolicitud from "../database/DaoSolicitud_Patente";
 const soli = new daoSolicitud();
-
-const connection = dbConnection();
 
 router.post("/", (req, res) => {
   const {
@@ -90,4 +85,4 @@ router.post("/", (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

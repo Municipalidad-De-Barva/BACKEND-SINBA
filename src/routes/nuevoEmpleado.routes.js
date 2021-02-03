@@ -1,12 +1,10 @@
-const {Router} = require("express");
+import {Router} from "express";
 const router = Router();
-const dbConnection = require("../config/dbConnection");
-const daoAdministrativo = require("../database/DaoAdministrativo");
-const administrativo = new daoAdministrativo();
 
-const connection = dbConnection();
+import daoAdministrativo from "../database/DaoAdministrativo";
+let administrativo = new daoAdministrativo();
 
-const Joi = require(`@hapi/joi`);
+import Joi from "@hapi/joi";
 
 const schema = Joi.object({
   user: Joi.string().min(9).required(),
@@ -44,4 +42,4 @@ router.post("/", (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

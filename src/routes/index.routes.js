@@ -1,4 +1,4 @@
-const {Router} = require("express");
+import {Router} from "express";
 const router = Router();
 
 //routes
@@ -19,4 +19,5 @@ router.post("/", (req, res) => {
     console.log(req.body);
   }
 });
-module.exports = router;
+
+export default router;

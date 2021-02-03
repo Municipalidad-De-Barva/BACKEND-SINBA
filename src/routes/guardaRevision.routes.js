@@ -1,12 +1,8 @@
 const {Router} = require("express");
 const router = Router();
-const dbConnection = require("../config/dbConnection");
-const DaoSolicitud_Patente = require("../database/DaoSolicitud_Patente");
+import DaoSolicitud_Patente from "../database/DaoSolicitud_Patente";
 const soli = new DaoSolicitud_Patente();
-
-const connection = dbConnection();
-
-const Joi = require(`@hapi/joi`);
+import Joi from "@hapi/joi";
 
 const schema = Joi.object({
   codigoSolicitud: Joi.number().min(1).required(),
@@ -73,4 +69,4 @@ router.post("/", (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

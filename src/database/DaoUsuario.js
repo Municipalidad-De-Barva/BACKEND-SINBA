@@ -1,7 +1,7 @@
-const dbConnection = require("../config/dbConnection");
-class DaoUsuario {
+import dao from "./Dao";
+export default class DaoUsuario extends dao {
   constructor() {
-    this.connection = dbConnection();
+    super();
     this.usuario = new Array();
   }
 
@@ -43,7 +43,7 @@ class DaoUsuario {
       console.log(result);
 
       if (result === "No se encuentra registrado...") {
-        const connection = dbConnection();
+        const connection = new dao();
         var sql = "INSERT INTO usuario SET ?";
 
         connection.query(
@@ -52,7 +52,8 @@ class DaoUsuario {
             PK_ID,
             Tipo,
           },
-          function (err, results) {
+
+          function (err) {
             if (err) {
               throw err;
             }
@@ -66,5 +67,3 @@ class DaoUsuario {
     });
   }
 }
-
-module.exports = DaoUsuario;

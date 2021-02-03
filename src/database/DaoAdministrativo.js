@@ -1,9 +1,9 @@
-const dbConnection = require("../config/dbConnection");
-const daoUsuario = require("./DaoUsuario");
-
-class DaoAdministrativo {
+import dbConnection from "../config/dbConnection";
+import daoUsuario from "./DaoUsuario";
+import dao from "./Dao";
+export default class DaoAdministrativo extends dao {
   constructor() {
-    this.connection = dbConnection();
+    super();
     this.administrativo = new Array();
     this.DaoUsu = new daoUsuario();
   }
@@ -15,13 +15,8 @@ class DaoAdministrativo {
       if (err) {
         throw err;
       }
-      var mostrarMensaje;
-      if (results.length === 0) {
-        mostrarMensaje = "No se encuentra registrado...";
-      } else {
-        mostrarMensaje = "Si se encuentra registrado...";
-      }
-      return callback(mostrarMensaje);
+
+      return callback(results);
     });
   }
 
@@ -32,13 +27,7 @@ class DaoAdministrativo {
       if (err) {
         throw err;
       }
-      var mostrarMensaje;
-      if (results.length === 0) {
-        mostrarMensaje = "No se encuentra registrado...";
-      } else {
-        mostrarMensaje = "Si se encuentra registrado...";
-      }
-      return callback(mostrarMensaje);
+      return callback(results);
     });
   }
 
@@ -84,5 +73,3 @@ class DaoAdministrativo {
     });
   }
 }
-
-module.exports = DaoAdministrativo;
