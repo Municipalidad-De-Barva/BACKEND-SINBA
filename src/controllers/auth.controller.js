@@ -1,6 +1,5 @@
 import jwt from "jsonwebtoken";
 import config from "../config/config";
-import User from "../models/User";
 
 import daoAdministrativo from "../database/DaoAdministrativo";
 const administrativo = new daoAdministrativo();
@@ -28,5 +27,9 @@ export const signIn = async (req, res) => {
 };
 
 export const signOut = async (req, res) => {
-  return res.status(400).json({message: "signOut"});
+  let token = req.headers["x-access-token"];
+  console.log("mostrando token antes de destruirlo", token);
+  jwt.destroy(token);
+  console.log("mostrando token despues de destruirlo", token);
+  return res.status(200).json({message: "signOut"});
 };

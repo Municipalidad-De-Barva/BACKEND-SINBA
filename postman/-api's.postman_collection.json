@@ -85,27 +85,16 @@
 				},
 				{
 					"name": "Signout",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
 							{
-								"key": "",
-								"value": "",
-								"type": "text"
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwNDc2MDU3NyIsImlhdCI6MTYxMjQ2ODYzNCwiZXhwIjoxNjEyNDY4OTM0fQ.27ReoEbt6NnFwS2TL7l63f-BcpNWSTak2c89pllgcDY",
+								"type": "text",
+								"equals": true
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"user\": \"304760577\",\n    \"pass\": \"123456\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "http://localhost:3001/api/auth/signout",
 							"protocol": "http",
@@ -200,6 +189,73 @@
 							"port": "3001",
 							"path": [
 								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "role",
+			"item": [
+				{
+					"name": "listRole",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/role/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"role",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Crear Empleado",
+			"item": [
+				{
+					"name": "api/empleado/crearEmpleado",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwNDc2MDU3NyIsImlhdCI6MTYxMjQ2ODYzNCwiZXhwIjoxNjEyNDY4OTM0fQ.27ReoEbt6NnFwS2TL7l63f-BcpNWSTak2c89pllgcDY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Tipo_Identificacion\": \"1\",\n    \"email\": \"b@g.com\",\n    \"name\": \"bryan sanchez brenes\",\n    \"pass\": \"34fsdrfw24aF\",\n    \"rol\": \"2\",\n    \"user\": \"666666666\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/empleado/crearEmpleado",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"empleado",
+								"crearEmpleado"
 							]
 						}
 					},

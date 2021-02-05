@@ -1,12 +1,11 @@
-import {config} from "dotenv";
-config();
+import config from "../config/config";
 import mysql from "mysql";
 module.exports = () => {
   return mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: process.env.PASSWORD_DB || "root",
-    database: "inspecciones_barva",
+    host: config.HOST,
+    user: config.USERNAME,
+    password: config.PASSWORD,
+    database: config.DATABASE,
   });
 };
 

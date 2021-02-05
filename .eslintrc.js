@@ -5,13 +5,9 @@ module.exports = {
   },
   extends: ["eslint:recommended", "prettier"],
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: [],
   rules: {},
 };
 

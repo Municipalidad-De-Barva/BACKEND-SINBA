@@ -35,6 +35,6 @@ export const crearUsuario = async (req, res) => {
     );
 
     console.log(user, pass, name, rol, email);
-    res.json("ok");
+    res.json("Usuario Registrado.");
   }
 };

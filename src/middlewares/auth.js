@@ -1,5 +1,5 @@
-const jwt = require("jsonwebtoken");
-const config = require("../config");
+import jwt from "jsonwebtoken";
+import config from "../config/config";
 
 //verificarToken es un middleware para comprobar si el token es valido, esto lo comprueba cada ves que ingresa a una nueva ruta.
 export const verifyToken = async (req, res, next) => {
@@ -8,7 +8,7 @@ export const verifyToken = async (req, res, next) => {
   if (!token) return res.status(403).json({message: "No token provided"});
 
   try {
-    const decoded = jwt.verify(token, config.SECRET);
+    const decoded = jwt.verify(token, config.SECRETKEY);
     req.userId = decoded.id;
 
     //crear un metodo consultar a la base de datos para obtener el usuario
@@ -20,4 +20,3 @@ export const verifyToken = async (req, res, next) => {
     return res.status(401).json({message: "Unauthorized!"});
   }
 };
-module.exports = verificarToken;
