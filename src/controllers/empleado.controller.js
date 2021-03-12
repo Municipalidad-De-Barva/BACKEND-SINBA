@@ -20,7 +20,7 @@ export const crearUsuario = async (req, res) => {
     console.log(error.details[0].message);
   } else {
     const {user, pass, name, rol, email, Tipo_Identificacion} = req.body;
-
+    console.warn("Insertando administrativo");
     administrativo.insertar_Administrativo(
       user,
       "Administrador",

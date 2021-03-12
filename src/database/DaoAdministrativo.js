@@ -41,35 +41,32 @@ export default class DaoAdministrativo extends dao {
     Tipo_Identificacion,
     callback
   ) {
+    console.warn("Entrando al metodo insertar admin a la db ");
     this.obtener_Administrativo(PK_ID, function (result) {
-      if (result === "No se encuentra registrado...") {
-        const DaoUsu = new daoUsuario();
-        DaoUsu.insertar_Usuarios(PK_ID, Tipo, function (result) {
-          const connection = dbConnection();
-          var sql = "INSERT INTO administrativo SET ?";
+      const DaoUsu = new daoUsuario();
+      DaoUsu.insertar_Usuarios(PK_ID, Tipo, function (result) {
+        const connection = dbConnection();
+        var sql = "INSERT INTO administrativo SET ?";
 
-          connection.query(
-            sql,
-            {
-              PK_ID,
-              Nombre,
-              FK_Rol,
-              Correo,
-              Clave,
-              Tipo_Identificacion,
-            },
-            function (err, results) {
-              if (err) {
-                throw err;
-              }
-              var mostrarMensaje = "Se realizó con exito...";
-              return callback(mostrarMensaje);
+        connection.query(
+          sql,
+          {
+            PK_ID,
+            Nombre,
+            FK_Rol,
+            Correo,
+            Clave,
+            Tipo_Identificacion,
+          },
+          function (err, results) {
+            if (err) {
+              throw err;
             }
-          );
-        });
-      } else {
-        return callback("Se encuentra registrado");
-      }
+            var mostrarMensaje = "Se realizó con exito...";
+            return callback(mostrarMensaje);
+          }
+        );
+      });
     });
   }
 }

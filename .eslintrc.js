@@ -1,7 +1,7 @@
 module.exports = {
   env: {
-    browser: true,
     es2021: true,
+    node: true,
   },
   extends: ["eslint:recommended", "prettier"],
   parserOptions: {
@@ -10,7 +10,6 @@ module.exports = {
   },
   rules: {},
 };
-
 /*
 estas lineas van en el package.json para activar el precommit, para habilitar estandares de hacer un commit aplique los cambios automaticamente, por el momento se desabilita.
 "husky": {
