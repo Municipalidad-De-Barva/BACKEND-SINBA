@@ -112,7 +112,7 @@ export default class DaoSolicitud_Patente extends dao {
 
   obtener_Solicitudes_NuevasEsp(callback) {
     var sql =
-      "select Solicitud_patente.PK_Codigo,Solicitud_patente.Estado,Solicitud_patente.Nombre_Comercial_Negocio,Contribuyente.Nombre from Contribuyente,Solicitud_patente where Contribuyente.PK_ID = Solicitud_patente.FK_ID_Contribuyente and Solicitud_patente.Estado='Nuevo' ";
+      "select solicitud_patente.PK_Codigo,solicitud_patente.Estado,solicitud_patente.Nombre_Comercial_Negocio,contribuyente.Nombre from contribuyente,solicitud_patente where contribuyente.PK_ID = solicitud_patente.FK_ID_Contribuyente and solicitud_patente.Estado='Nuevo' ";
     this.connection.query(sql, function (err, results) {
       if (err) {
         throw err;
