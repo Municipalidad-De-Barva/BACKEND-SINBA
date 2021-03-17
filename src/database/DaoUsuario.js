@@ -1,3 +1,4 @@
+import dbConnection from "../config/dbConnection";
 import dao from "./Dao";
 export default class DaoUsuario extends dao {
   constructor() {
@@ -43,7 +44,7 @@ export default class DaoUsuario extends dao {
       console.log(result);
 
       if (result === "No se encuentra registrado...") {
-        const connection = new dao();
+        const connection = dbConnection();
         var sql = "INSERT INTO usuario SET ?";
 
         connection.query(
@@ -52,8 +53,7 @@ export default class DaoUsuario extends dao {
             PK_ID,
             Tipo,
           },
-
-          function (err) {
+          function (err, results) {
             if (err) {
               throw err;
             }

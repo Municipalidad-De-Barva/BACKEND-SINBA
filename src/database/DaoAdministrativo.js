@@ -15,7 +15,12 @@ export default class DaoAdministrativo extends dao {
       if (err) {
         throw err;
       }
-
+      var mostrarMensaje;
+      if (results.length === 0) {
+        mostrarMensaje = "No se encuentra registrado...";
+      } else {
+        mostrarMensaje = "Si se encuentra registrado...";
+      }
       return callback(results);
     });
   }
@@ -27,7 +32,13 @@ export default class DaoAdministrativo extends dao {
       if (err) {
         throw err;
       }
-      return callback(results);
+      var mostrarMensaje;
+      if (results.length === 0) {
+        mostrarMensaje = "No se encuentra registrado...";
+      } else {
+        mostrarMensaje = "Si se encuentra registrado...";
+      }
+      return callback(mostrarMensaje);
     });
   }
 
@@ -41,32 +52,35 @@ export default class DaoAdministrativo extends dao {
     Tipo_Identificacion,
     callback
   ) {
-    console.warn("Entrando al metodo insertar admin a la db ");
     this.obtener_Administrativo(PK_ID, function (result) {
-      const DaoUsu = new daoUsuario();
-      DaoUsu.insertar_Usuarios(PK_ID, Tipo, function (result) {
-        const connection = dbConnection();
-        var sql = "INSERT INTO administrativo SET ?";
+      if (result === "No se encuentra registrado...") {
+        const DaoUsu = new daoUsuario();
+        DaoUsu.insertar_Usuarios(PK_ID, Tipo, function (result) {
+          const connection = dbConnection();
+          var sql = "INSERT INTO administrativo SET ?";
 
-        connection.query(
-          sql,
-          {
-            PK_ID,
-            Nombre,
-            FK_Rol,
-            Correo,
-            Clave,
-            Tipo_Identificacion,
-          },
-          function (err, results) {
-            if (err) {
-              throw err;
+          connection.query(
+            sql,
+            {
+              PK_ID,
+              Nombre,
+              FK_Rol,
+              Correo,
+              Clave,
+              Tipo_Identificacion,
+            },
+            function (err, results) {
+              if (err) {
+                throw err;
+              }
+              var mostrarMensaje = "Se realizó con exito...";
+              return callback(mostrarMensaje);
             }
-            var mostrarMensaje = "Se realizó con exito...";
-            return callback(mostrarMensaje);
-          }
-        );
-      });
+          );
+        });
+      } else {
+        return callback("Se encuentra registrado");
+      }
     });
   }
 }
