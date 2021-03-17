@@ -7,7 +7,7 @@ import pkg from "../package.json";
 
 //settings express
 const app = express();
-app.set("port", config.PORT);
+app.set("port", config.PORTBACKEND);
 app.set("json spaces", 2);
 app.set("pkg", pkg);
 
