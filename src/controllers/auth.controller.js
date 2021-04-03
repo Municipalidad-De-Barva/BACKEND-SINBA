@@ -22,7 +22,8 @@ export const signIn = async (req, res) => {
         expiresIn: config.TIME, //token es valido por cinco minutos
       });
       console.log(token);
-      res.status(200).json({auth: true, token});
+      let sendType=usuario.FK_Rol;  //para filtrado de opciones
+      res.status(200).json({auth: true, token,sendType});
     }
   });
 };
