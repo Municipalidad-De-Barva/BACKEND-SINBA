@@ -12,16 +12,10 @@
 					"name": "Signin",
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "",
-								"value": "",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user\": \"304760577\",\n    \"pass\": \"123456\"\n}",
+							"raw": "{\n    \"user\": \"304760577\",\n    \"pass\": \"Xy!2020\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -232,7 +226,7 @@
 						"header": [
 							{
 								"key": "x-access-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwNDc2MDU3NyIsImlhdCI6MTYxMjQ2ODYzNCwiZXhwIjoxNjEyNDY4OTM0fQ.27ReoEbt6NnFwS2TL7l63f-BcpNWSTak2c89pllgcDY",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwNDc2MDU3NyIsImlhdCI6MTYxNjAyODA3OCwiZXhwIjoxNjE2MDI4Mzc4fQ.BNYvoaLMA0Til7KKf4VrF9HZpSLWjslvMlQO0vR5Pee",
 								"type": "text"
 							}
 						],
@@ -256,6 +250,128 @@
 								"api",
 								"empleado",
 								"crearEmpleado"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inspector",
+			"item": [
+				{
+					"name": "listar inspecciones",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwNDc2MDU3NyIsImlhdCI6MTYxNzczMjQ1NywiZXhwIjoxNjE3NzMyNzU3fQ.sTn_eTQyv7h65B9o1af6nNsswPGDZ5TtOupW6B7H4Eo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/api/inspector/listar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"inspector",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insertar inspeccion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwNDc2MDU3NyIsImlhdCI6MTYxNzczMjQ1NywiZXhwIjoxNjE3NzMyNzU3fQ.sTn_eTQyv7h65B9o1af6nNsswPGDZ5TtOupW6B7H4Eo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"FK_Inspector_Administrativo\":\"010001234\",\n    \"FK_Solicitud_Patente\":\"18\",\n    \"Descripcion\":\"dfdfdf\",\n    \"Local\":\"fdfdf\",\n    \"Direccion\":\"fdfdfdfdfdf\",\n    \"Requisito_Local_Acorde_Actividadl\":\"1\",\n    \"Planta_Fisica\":\"1\",\n    \"Senalizacion\":\"1\",\n    \"Luces_Emergencias\":\"1\",\n    \"Extintor\":\"1\",\n    \"Salida_Emergencia\":\"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/inspector/agregar?x-access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwNDc2MDU3NyIsImlhdCI6MTYxNzczMjQ1NywiZXhwIjoxNjE3NzMyNzU3fQ.sTn_eTQyv7h65B9o1af6nNsswPGDZ5TtOupW6B7H4Eo&c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"inspector",
+								"agregar"
+							],
+							"query": [
+								{
+									"key": "x-access-token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwNDc2MDU3NyIsImlhdCI6MTYxNzczMjQ1NywiZXhwIjoxNjE3NzMyNzU3fQ.sTn_eTQyv7h65B9o1af6nNsswPGDZ5TtOupW6B7H4Eo"
+								},
+								{
+									"key": "c",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener Inspeccion",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwNDc2MDU3NyIsImlhdCI6MTYxNzczMjQ1NywiZXhwIjoxNjE3NzMyNzU3fQ.sTn_eTQyv7h65B9o1af6nNsswPGDZ5TtOupW6B7H4Eo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"PK_Codigo_Inspeccion\":\"6\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/inspector/obtener",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"inspector",
+								"obtener"
 							]
 						}
 					},
