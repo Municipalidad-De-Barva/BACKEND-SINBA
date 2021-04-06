@@ -34,25 +34,6 @@ router.post("/", (req, res) => {
     actividad &&
     declaraJura
   ) {
-    /*
-          if(!represLegalSolicitante || !cedulaJuriSolicitante){
-            represLegalSolicitante="NA";
-            cedulaJuriSolicitante="0";
-          }
-          if(!faxSolicitante){
-            faxSolicitante="0";
-          }
-          if(!dirSolicitante || !represLegalPropietario || !cedulaJuriPropietario || !dirPropietario){
-            dirSolicitante="NA";
-            represLegalPropietario="NA";
-            cedulaJuriPropietario="0";
-            dirPropietario="NA";
-          }
-          if(!nomAutorizado || !cedAutorizado){
-            nomAutorizado="NA";
-            cedAutorizado="0";
-          }*/
-
     soli.insertar_Solicitud_Patentes(
       cedulaSolicitante,
       "Contribuyente",

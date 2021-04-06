@@ -12,8 +12,6 @@ const schema = Joi.object({
 });
 
 export const crearUsuario = async (req, res) => {
-  //return res.status(200).json({message: "Crear usuario"});
-
   const {error} = schema.validate(req.body);
   if (error) {
     res.status(500).send(error.details[0].message);

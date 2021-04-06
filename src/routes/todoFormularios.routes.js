@@ -18,8 +18,6 @@ router.post("/selected", (req, res) => {
   const {codigo} = req.body;
   if (codigo) {
     soli.obtener_Solicitud_Codigo(codigo, function (result) {
-      //console.log(result[0].FK_ID_Contribuyente);
-      //res.json(result);
       contri.obtener_ContribuyenteID(result[0].FK_ID_Contribuyente, function (
         resu
       ) {
@@ -33,7 +31,7 @@ router.post("/selected", (req, res) => {
         myobj.Fax = resu[0].Fax;
         myobj.Correo = resu[0].Correo;
         var arr = [myobj];
-        console.log("asasasasasasasasasasasasasaaaaaaasasasasasasa");
+
         console.log(myobj);
         res.json(arr);
       });
