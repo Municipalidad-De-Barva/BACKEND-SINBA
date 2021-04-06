@@ -71,5 +71,17 @@ export default class Dao_Inspeccion_Patente_Nueva extends dao {
     
   }
 
+    obtener_inspeccion_patente_nueva_codigo(PK_Codigo_Inspeccion, callback) {
+    var sql = "SELECT * FROM inspeccion_patente_nueva where PK_Codigo_Inspeccion = ? ";
+
+    this.connection.query(sql, [PK_Codigo_Inspeccion], function (err, results) {
+      if (err) {
+        throw err;
+      }
+      console.log(results);
+      return callback(results);
+    });
+  }
+
 
 }
