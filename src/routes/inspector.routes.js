@@ -20,4 +20,8 @@ router.post(
   inspectorCtrl.insertar_Inspecciones_Patentes_Nuevas
 );
 
+router.put(
+  "/actualizar",
+  inspectorCtrl.actualizar_Datos_Inspeccion_Patente_Nueva
+);
 export default router;

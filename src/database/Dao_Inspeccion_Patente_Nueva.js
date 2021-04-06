@@ -94,7 +94,7 @@ export default class Dao_Inspeccion_Patente_Nueva extends dao {
   ) {
     var sql =
       "UPDATE inspeccion_patente_nueva SET Descripcion = ? ,Local = ? ,Direccion = ? ,Requisito_Local_Acorde_Actividadl = ? ,Planta_Fisica = ? ,Senalizacion = ? ,Luces_Emergencias = ? ,Extintor = ? ,Salida_Emergencia = ?  Where PK_Codigo_Inspeccion = ? ";
-    console.log(PK_Codigo);
+    console.log(PK_Codigo_Inspeccion);
     this.connection.query(
       sql,
       [

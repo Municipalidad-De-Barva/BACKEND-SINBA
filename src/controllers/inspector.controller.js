@@ -58,3 +58,36 @@ export const obtener_inspeccion_patente_nueva_codigo = async (req, res) => {
     }
   );
 };
+
+export const actualizar_Datos_Inspeccion_Patente_Nueva = async (req, res) => {
+  const {
+    Descripcion,
+    Local,
+    Direccion,
+    Requisito_Local_Acorde_Actividadl,
+    Planta_Fisica,
+    Senalizacion,
+    Luces_Emergencias,
+    Extintor,
+    Salida_Emergencia,
+    PK_Codigo_Inspeccion,
+  } = req.body;
+
+  inspector.actualizar_Datos_Inspeccion_Patente_Nueva(
+    Descripcion,
+    Local,
+    Direccion,
+    Requisito_Local_Acorde_Actividadl,
+    Planta_Fisica,
+    Senalizacion,
+    Luces_Emergencias,
+    Extintor,
+    Salida_Emergencia,
+    PK_Codigo_Inspeccion,
+
+    function (result) {
+      console.log("result", result);
+      res.status(200).json("actualizado");
+    }
+  );
+};
