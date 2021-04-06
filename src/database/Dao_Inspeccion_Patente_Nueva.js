@@ -83,5 +83,45 @@ export default class Dao_Inspeccion_Patente_Nueva extends dao {
     });
   }
 
+  actualizar_Datos_Inspeccion_Patente_Nueva(
+    Descripcion,
+    Local,
+    Direccion,
+    Requisito_Local_Acorde_Actividadl,
+    Planta_Fisica,
+    Senalizacion,
+    Luces_Emergencias,
+    Extintor,
+    Salida_Emergencia,
+    PK_Codigo_Inspeccion,
+    callback
+  ) {
+    var sql = 
+      "UPDATE inspeccion_patente_nueva SET Descripcion = ? ,Local = ? ,Direccion = ? ,Requisito_Local_Acorde_Actividadl = ? ,Planta_Fisica = ? ,Senalizacion = ? ,Luces_Emergencias = ? ,Extintor = ? ,Salida_Emergencia = ?  Where PK_Codigo_Inspeccion = ? ";
+    console.log(PK_Codigo);
+    this.connection.query(
+      sql,
+      [
+        Descripcion,
+        Local,
+        Direccion,
+        Requisito_Local_Acorde_Actividadl,
+        Planta_Fisica,
+        Senalizacion,
+        Luces_Emergencias,
+        Extintor,
+        Salida_Emergencia,
+        PK_Codigo_Inspeccion,
+      ],
+      function (err, results) {
+        if (err) {
+          throw err;
+        }
+        console.log(results);
+        return callback(results);
+      }
+    );
+  }
+
 
 }
