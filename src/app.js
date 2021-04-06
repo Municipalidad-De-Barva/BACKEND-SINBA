@@ -70,6 +70,7 @@ import empleado from "./routes/empleado.routes";
 import todoFormularios from "./routes/todoFormularios.routes";
 import guardaRevision from "./routes/guardaRevision.routes";
 import role from "./routes/role.routes";
+import inspector from "./routes/inspector.routes";
 
 app.use("/api", indexroutes);
 app.use("/api/nuevoForm", nuevoFormulario);
@@ -80,5 +81,8 @@ app.use("/api/EspForm", todoFormularios);
 app.use("/api/revision", guardaRevision);
 
 app.use("/api/role", role);
+
+//Inspector API
+app.use("/api/inspector", inspector);
 
 export default app;
