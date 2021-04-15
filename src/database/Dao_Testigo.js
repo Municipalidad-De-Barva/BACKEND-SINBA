@@ -1,5 +1,6 @@
 import dbConnection from "../config/dbConnection";
 import dao from "./Dao";
+const {appConfig} = require('../config/config')
 
 
 export default class Dao_Testigo extends dao {
@@ -23,13 +24,14 @@ export default class Dao_Testigo extends dao {
 
 
 
-    insertar_Testigo(PK_ID, Nombre_Completo,Telefono,Correo,callback) {
-
-    this.obtener_Usuario(PK_ID, function (result) {
+    insertar_Testigo(PK_ID, Nombre_Completo,Telefono,firma,callback) {
+console.log("Firma"+firma);
+    this.obtener_Testigo(PK_ID, function (result) {
       console.log(result);
 
       if (Object.entries(result).length === 0) {
         const connection = dbConnection();
+      
         var sql = "INSERT INTO testigo SET ?";
 
         connection.query(
@@ -37,7 +39,8 @@ export default class Dao_Testigo extends dao {
           {
             PK_ID,
             Nombre_Completo,
-            Telefono
+            Telefono,
+            firma
           },
           function (err, results) {
             if (err) {
