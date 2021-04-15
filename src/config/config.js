@@ -3,14 +3,15 @@ config();
 
 export default {
   /*PORTS*/
-  PORTBACKEND: process.env.PORTBACKEND || 3001,
-  PORTFRONTEND: process.env.PORTFRONTEND || 3000,
+  PORTBACKEND: 3001,
+  PORTFRONTEND: 3000,
+  APP_HOST:"http://localhost",
 
   /*DATABASE*/
-  USERNAME_DB: process.env.USERNAME_DB || "root",
-  PASSWORD_DB: process.env.PASSWORD_DB || "root",
-  DATABASE_DB: process.env.DATABASE_DB || "inspecciones_barva",
-  HOST_DB: process.env.HOST_DB || "localhost",
+  USERNAME_DB: "root",
+  PASSWORD_DB: "root",
+  DATABASE_DB: "inspecciones_barva",
+  HOST_DB: "localhost",
 
   /*JsonWebToken*/
   SECRETKEY: process.env.SECRETKEY || "my-secretkey-Sinb@",
