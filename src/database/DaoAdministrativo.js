@@ -74,6 +74,7 @@ export default class DaoAdministrativo extends dao {
                 throw err;
               }
               var mostrarMensaje = "Se realizó con exito...";
+              console.log(results);
               return callback(mostrarMensaje);
             }
           );
