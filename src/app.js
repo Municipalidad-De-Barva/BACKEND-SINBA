@@ -71,7 +71,9 @@ import todoFormularios from "./routes/todoFormularios.routes";
 import guardaRevision from "./routes/guardaRevision.routes";
 import role from "./routes/role.routes";
 import inspector from "./routes/inspector.routes";
+import testigo from "./routes/testigo.routes";
 
+//rutas
 app.use("/api", indexroutes);
 app.use("/api/nuevoForm", nuevoFormulario);
 app.use("/api/auth", auth);
@@ -84,5 +86,6 @@ app.use("/api/role", role);
 
 //Inspector API
 app.use("/api/inspector", inspector);
+app.use("/api/testigo", testigo);
 
 export default app;
