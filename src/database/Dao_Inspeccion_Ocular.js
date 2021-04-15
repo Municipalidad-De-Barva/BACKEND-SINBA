@@ -59,7 +59,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
             Nombre_Completo_Testigo2,
             Telefono_Testigo2,
             Correo_Testigo2,
-            firma_testigo2,
+             firma_testigo2,
             function (result) {
               if (result === "Se ingreso nuevo testigo") {
                 const connection = dbConnection();
