@@ -5,11 +5,11 @@ export default {
   /*PORTS*/
   PORTBACKEND: 3001,
   PORTFRONTEND: 3000,
-  APP_HOST:"http://localhost",
+  APP_HOST: "http://localhost",
 
   /*DATABASE*/
   USERNAME_DB: "root",
-  PASSWORD_DB: "root",
+  PASSWORD_DB: "password",
   DATABASE_DB: "inspecciones_barva",
   HOST_DB: "localhost",
 
