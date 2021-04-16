@@ -1,9 +1,6 @@
 import dbConnection from "../config/dbConnection";
 import dao from "./Dao";
-const {appConfig} = require('../config/config')
-
-
-
+const {appConfig} = require("../config/config");
 
 export default class Dao_Testigo extends dao {
   constructor() {
@@ -45,28 +42,28 @@ export default class Dao_Testigo extends dao {
     });
   }
 
-    insertar_Testigo(PK_ID, Nombre_Completo,Telefono,Correo,Firma, callback) {
+  insertar_Testigo(PK_ID, Nombre_Completo, Telefono, Correo, Firma, callback) {
+    const connection = dbConnection();
+    var sql = "INSERT INTO testigo SET ?";
 
+    connection.query(
+      sql,
+      {
+        PK_ID,
+        Nombre_Completo,
+        Telefono,
+        Correo,
+        Firma,
+      },
+      function (err, results) {
+        if (err) {
+          throw err;
+        }
 
-        const connection = dbConnection();
-        var sql = "INSERT INTO testigo SET ?";
-
-        connection.query(
-          sql,
-          {
-            PK_ID, Nombre_Completo,Telefono,Correo,Firma,
-          },
-          function (err, results) {
-            if (err) {
-              throw err;
-            }
-
-            return callback("Se ingreso nuevo testigo");
-          }
-        );
-       
-     }
-
+        return callback("Se ingreso nuevo testigo");
+      }
+    );
+  }
 
   listar_Testigos(callback) {
     var sql = "SELECT * FROM testigo";
@@ -80,4 +77,3 @@ export default class Dao_Testigo extends dao {
     });
   }
 }
-

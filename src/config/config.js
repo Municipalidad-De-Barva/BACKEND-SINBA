@@ -5,7 +5,7 @@ export default {
   /*PORTS*/
   PORTBACKEND: 3001,
   PORTFRONTEND: 3000,
-  APP_HOST:"http://localhost",
+  APP_HOST: "http://localhost",
 
   /*DATABASE*/
   USERNAME_DB: "root",
