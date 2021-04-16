@@ -37,7 +37,7 @@ export default class Dao_Testigo extends dao {
       if (err) {
         throw err;
       }
-      mostrarMensaje = "Si existe testigo";
+      let mostrarMensaje = "Si existe testigo";
       return callback(mostrarMensaje);
     });
   }

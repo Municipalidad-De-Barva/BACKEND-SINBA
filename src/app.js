@@ -69,7 +69,7 @@ import guardaRevision from "./routes/guardaRevision.routes";
 import role from "./routes/role.routes";
 import inspector from "./routes/inspector.routes";
 import testigo from "./routes/testigo.routes";
-
+import images from "./routes/images.routes";
 //rutas
 app.get("/", cors(corsOptions), function (req, res, next) {
   res.json({
@@ -95,5 +95,5 @@ app.use("/api/role", role);
 //Inspector API
 app.use("/api/inspector", inspector);
 app.use("/api/testigo", testigo);
-
+app.use("/api/images", images);
 export default app;

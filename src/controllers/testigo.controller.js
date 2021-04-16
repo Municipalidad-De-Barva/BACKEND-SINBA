@@ -36,3 +36,9 @@ export const listar_Testigos = async (req, res) => {
     return res.status(200).json({listaTestigo: result});
   });
 };
+
+export const insertar_Firma_Testigo = async (req, res) => {
+  // testigo.insertar_Firma_Testigo(PK_ID, img function(resutl){
+  //  return res.status.json("agregado");
+  // });
+};
