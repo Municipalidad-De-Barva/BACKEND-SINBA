@@ -23,7 +23,7 @@ export const signIn = async (req, res) => {
       });
       console.log(token);
       let sendType = usuario.FK_Rol; //para filtrado de opciones
-      let sendId = usuario.Nombre;
+      let sendId = usuario.PK_ID;
       res.status(200).json({auth: true, token, sendType, sendId});
     }
   });
