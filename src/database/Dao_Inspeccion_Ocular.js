@@ -32,13 +32,11 @@ export default class Dao_Inspeccion_Ocular extends dao {
     Nombre_Completo_Testigo1,
     Telefono_Testigo1,
     Correo_Testigo1,
-    firma_testigo1,
     //Datos del testigo #2
     FK_Testigo2,
     Nombre_Completo_Testigo2,
     Telefono_Testigo2,
     Correo_Testigo2,
-    firma_testigo2,
     callback
   ) {
     const DaoTestigo = new daotestigo();
@@ -50,7 +48,6 @@ export default class Dao_Inspeccion_Ocular extends dao {
       Nombre_Completo_Testigo1,
       Telefono_Testigo1,
       Correo_Testigo1,
-      firma_testigo1,
       function (result) {
         if (result === "Se ingreso nuevo testigo") {
           // Insertar testigo2
@@ -59,7 +56,6 @@ export default class Dao_Inspeccion_Ocular extends dao {
             Nombre_Completo_Testigo2,
             Telefono_Testigo2,
             Correo_Testigo2,
-            firma_testigo2,
             function (result) {
               if (result === "Se ingreso nuevo testigo") {
                 const connection = dbConnection();

@@ -9,6 +9,18 @@ export default class Dao_Inspeccion_Patente_Nueva extends dao {
     this.DaoUsu = new daoUsuario();
   }
 
+   obtener_ultima_inspeccion_patente_(callback) {
+    var sql = "SELECT MAX(PK_Codigo_Inspeccion) AS PK_Codigo_Inspeccion FROM inspeccion_patente_nueva;";
+
+    this.connection.query(sql, function (err, results) {
+      if (err) {
+        throw err;
+      }
+  
+      return callback(results);
+    });
+  }
+
   listar_Inspecciones_Patentes_Nuevas(callback) {
     var sql = "SELECT * FROM inspeccion_patente_nueva";
 

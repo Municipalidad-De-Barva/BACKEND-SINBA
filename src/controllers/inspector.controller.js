@@ -19,7 +19,7 @@ export const insertar_Inspecciones_Patentes_Nuevas = async (req, res) => {
     Descripcion,
     Local,
     Direccion,
-    Requisito_Local_Acorde_Actividadl,
+    Requisito_Local_Acorde_Actividad,
     Planta_Fisica,
     Senalizacion,
     Luces_Emergencias,
@@ -33,7 +33,7 @@ export const insertar_Inspecciones_Patentes_Nuevas = async (req, res) => {
     Descripcion,
     Local,
     Direccion,
-    Requisito_Local_Acorde_Actividadl,
+    Requisito_Local_Acorde_Actividad,
     Planta_Fisica,
     Senalizacion,
     Luces_Emergencias,
@@ -41,8 +41,13 @@ export const insertar_Inspecciones_Patentes_Nuevas = async (req, res) => {
     Salida_Emergencia,
 
     function (result) {
-      console.log("Result:", result);
-      res.status(200).json(result);
+      inspector.obtener_ultima_inspeccion_patente_(
+        function (result) {
+          console.log(result[0].PK_Codigo_Inspeccion);
+          return res.status(200).json(result[0]);
+          
+        }
+      );
     }
   );
 };

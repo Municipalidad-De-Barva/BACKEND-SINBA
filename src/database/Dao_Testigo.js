@@ -42,7 +42,7 @@ export default class Dao_Testigo extends dao {
     });
   }
 
-  insertar_Testigo(PK_ID, Nombre_Completo, Telefono, Correo, Firma, callback) {
+  insertar_Testigo(PK_ID, Nombre_Completo, Telefono, Correo, callback) {
     const connection = dbConnection();
     var sql = "INSERT INTO testigo SET ?";
 
@@ -53,7 +53,6 @@ export default class Dao_Testigo extends dao {
         Nombre_Completo,
         Telefono,
         Correo,
-        Firma,
       },
       function (err, results) {
         if (err) {
