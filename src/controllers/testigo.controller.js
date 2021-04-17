@@ -5,7 +5,7 @@ export const obtener_Testigo = async (req, res) => {
   const {PK_ID} = req.body;
 
   testigo.obtener_Testigo(PK_ID, function (result) {
-    if (typeof result !== "undefined" && result !== null && result === "") {
+    if (typeof result !== "undefined" && result !== null && result !== "") {
       return res.status(200).json({testigo: result});
     }
     return res.status(500).json({error: "Testigo no existe"});
