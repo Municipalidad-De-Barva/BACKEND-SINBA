@@ -6,6 +6,8 @@ router.get("/listar", inspectorCtrl.listar_Inspecciones_Patentes_Nuevas);
 
 router.get("/obtener", inspectorCtrl.obtener_inspeccion_patente_nueva_codigo);
 
+router.get("/obtenerNUmero", inspectorCtrl.obtenerNumero);
+
 router.post("/agregar", inspectorCtrl.insertar_Inspecciones_Patentes_Nuevas);
 
 router.put(
