@@ -4,6 +4,7 @@ const inspeOcular = new daoInspeOcular();
 export const listar_Inspecciones_Oculares = async (req, res) => {};
 
 export const insertar_Inspeccion_Ocular = async (req, res) => {
+  console.log(req.body);
   const {
     // Datos de la inpeccion ocular
     FK_Inspeccion_Patente_Nueva, //Corresponde al código (LLave Primaria) de la tabla inspeccion_patente_nueva;
