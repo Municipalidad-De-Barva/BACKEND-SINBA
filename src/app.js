@@ -70,6 +70,7 @@ import role from "./routes/role.routes";
 import inspector from "./routes/inspector.routes";
 import testigo from "./routes/testigo.routes";
 import images from "./routes/images.routes";
+import insOcular from "./routes/inspeccionOcular.routes";
 //rutas
 app.get("/", cors(corsOptions), function (req, res, next) {
   res.json({
@@ -96,4 +97,6 @@ app.use("/api/role", role);
 app.use("/api/inspector", inspector);
 app.use("/api/testigo", testigo);
 app.use("/api/images", images);
+app.use("/api/inspOcular", insOcular);
+
 export default app;

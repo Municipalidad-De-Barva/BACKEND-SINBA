@@ -13,17 +13,16 @@ export const obtener_Testigo = async (req, res) => {
 };
 
 export const insertar_Testigo = async (req, res) => {
-  const {PK_ID, Nombre, apellido1, apellido2, Telefono, Correo} = req.body;
+  const {PK_ID, Nombre_Completo, Telefono, Correo, Firma} = req.body;
 
   testigo.insertar_Testigo(
     PK_ID,
-    Nombre,
-    apellido1,
-    apellido2,
+    Nombre_Completo,
     Telefono,
     Correo,
+    Firma,
     function (result) {
-      if (result === "Se ingreso un nuevo Testigo") {
+      if (result === "Se ingreso nuevo testigo") {
         return res.status(200).json(result);
       }
       return res.status(500).json(result);
