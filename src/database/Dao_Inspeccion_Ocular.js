@@ -29,12 +29,10 @@ export default class Dao_Inspeccion_Ocular extends dao {
     Resultado,
     // Datos del testigo #1
     FK_Testigo1,
-    //Nombre_Completo_Testigo1,
     Telefono_Testigo1,
     Correo_Testigo1,
     //Datos del testigo #2
     FK_Testigo2,
-    //Nombre_Completo_Testigo2,
     Telefono_Testigo2,
     Correo_Testigo2,
     callback
@@ -45,7 +43,6 @@ export default class Dao_Inspeccion_Ocular extends dao {
 
     DaoTestigo.insertar_Testigo(
       FK_Testigo1,
-      "",
       Telefono_Testigo1,
       Correo_Testigo1,
       function (result) {
@@ -53,7 +50,6 @@ export default class Dao_Inspeccion_Ocular extends dao {
           // Insertar testigo2
           DaoTestigo.insertar_Testigo(
             FK_Testigo2,
-            "",
             Telefono_Testigo2,
             Correo_Testigo2,
             function (result) {
@@ -71,6 +67,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
                     Resultado,
                     FK_Testigo1,
                     FK_Testigo2,
+                    Estado:"Pendiente"
                   },
                   function (err, results) {
                     if (err) {
