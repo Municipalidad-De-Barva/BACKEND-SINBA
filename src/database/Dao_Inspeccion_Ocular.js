@@ -1,24 +1,57 @@
 import dbConnection from "../config/dbConnection";
 import daotestigo from "./Dao_Testigo";
 import dao from "./Dao";
+import daoinspeccion from "./Dao_Inspeccion_Patente_Nueva";
+const util = require('util');
+
 
 export default class Dao_Inspeccion_Ocular extends dao {
+
+
+
   constructor() {
+    var carName = "c";
     super();
     this.DaoTestigo = new daotestigo();
   }
 
-  listar_Inspecciones_Oculares(callback) {
-    var sql = "SELECT * FROM inspeccion_ocular";
 
-    this.connection.query(sql, function (err, results) {
-      if (err) {
-        throw err;
-      }
-      console.log(results);
-      return callback(results);
-    });
+
+
+  async listar_Inspecciones_Oculares() {
+    const DaoTestigo = new daotestigo();
+    const DaoInpeccion = new daoinspeccion();
+    const query = util.promisify(this.connection.query).bind(this.connection);
+    const rows = await query('SELECT * FROM inspeccion_ocular');
+    var lista = []
+    for (var i = 0; i < rows.length; i++) {
+      const inp = await DaoInpeccion.obtener_inspeccion_patente_nueva(rows[i].FK_Inspeccion_Patente_Nueva);
+      const test1 = await DaoTestigo.obtener_Testigo2(rows[i].FK_Testigo1);
+      const test2 = await DaoTestigo.obtener_Testigo2(rows[i].FK_Testigo2);
+      var inspe = {
+        PK_Codigo_Inspeccion: rows[i].FK_Inspeccion_Patente_Nueva,
+        FK_Inspeccion_Patente_Nueva: inp,
+        Lugar_Visita: rows[i].Lugar_Visita,
+        Fecha: rows[i].Fecha,
+        Diligencia: rows[i].Diligencia,
+        Resultado: rows[i].Resultado,
+        FK_Testigo1: test1,
+        FK_Testigo2: test2,
+        Firma_Inspector_1: rows[i].Firma_Inspector_1,
+        Firma_Inspector_2: rows[i].Firma_Inspector_2,
+        Estado: rows[i].Estado
+      };
+      lista.push(inspe);
+    }
+    console.log(lista);
+
   }
+
+
+
+
+
+
 
   insertar_Inspeccion_Ocular(
     // Datos de la inpeccion ocular
@@ -67,7 +100,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
                     Resultado,
                     FK_Testigo1,
                     FK_Testigo2,
-                    Estado:"Pendiente"
+                    Estado: "Pendiente"
                   },
                   function (err, results) {
                     if (err) {
