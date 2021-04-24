@@ -1,6 +1,7 @@
 import dbConnection from "../config/dbConnection";
 import daoUsuario from "./DaoAdministrativo";
 import dao from "./Dao";
+const util = require('util');
 
 export default class Dao_Inspeccion_Patente_Nueva extends dao {
   constructor() {
@@ -9,14 +10,14 @@ export default class Dao_Inspeccion_Patente_Nueva extends dao {
     this.DaoUsu = new daoUsuario();
   }
 
-   obtener_ultima_inspeccion_patente_(callback) {
+  obtener_ultima_inspeccion_patente_(callback) {
     var sql = "SELECT MAX(PK_Codigo_Inspeccion) AS PK_Codigo_Inspeccion FROM inspeccion_patente_nueva;";
 
     this.connection.query(sql, function (err, results) {
       if (err) {
         throw err;
       }
-  
+
       return callback(results);
     });
   }
@@ -89,6 +90,15 @@ export default class Dao_Inspeccion_Patente_Nueva extends dao {
       console.log(results);
       return callback(results);
     });
+  }
+
+  async obtener_inspeccion_patente_nueva(PK_ID) {
+
+    const query = util.promisify(this.connection.query).bind(this.connection);
+    const inspeccion = await query('SELECT * FROM inspeccion_patente_nueva where PK_Codigo_Inspeccion = ? ', [PK_ID]);
+
+    return inspeccion;
+
   }
 
   actualizar_Datos_Inspeccion_Patente_Nueva(
