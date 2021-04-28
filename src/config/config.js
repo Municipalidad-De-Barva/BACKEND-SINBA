@@ -16,6 +16,10 @@ export default {
   /*JsonWebToken*/
   SECRETKEY: process.env.SECRETKEY || "my-secretkey-Sinb@",
   TIME: 60 * 5,
+
+  /*Multer */
+  RUTA_PUBLICA_IMAGENES: "../public",
+  RUTA_FIRMA_TESTIGO: `../public/firmaTestigo`,
 };
 /*
  * Este archivo contiene configuraciones sobre el proyecto, como claves, puertos, etc

@@ -1,6 +1,6 @@
 import daoTestigo from "../database/Dao_Testigo";
 const testigo = new daoTestigo();
-
+import path from "path";
 export const obtener_Testigo = async (req, res) => {
   const {PK_ID} = req.body;
 
@@ -13,8 +13,10 @@ export const obtener_Testigo = async (req, res) => {
 };
 
 export const insertar_Testigo = async (req, res) => {
-  const {PK_ID, Nombre_Completo, Telefono, Correo, Firma} = req.body;
-
+  const {PK_ID, Nombre_Completo, Telefono, Correo} = req.body;
+  const Firma =
+    "/firmaTestigo/" + req.file.filename + path.extname(req.file.originalname);
+  console.log("nombre del archivo: ", Firma);
   testigo.insertar_Testigo(
     PK_ID,
     Nombre_Completo,
@@ -34,10 +36,4 @@ export const listar_Testigos = async (req, res) => {
   testigo.listar_Testigos(function (result) {
     return res.status(200).json({listaTestigo: result});
   });
-};
-
-export const insertar_Firma_Testigo = async (req, res) => {
-  // testigo.insertar_Firma_Testigo(PK_ID, img function(resutl){
-  //  return res.status.json("agregado");
-  // });
 };

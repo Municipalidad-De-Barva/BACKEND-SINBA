@@ -37,30 +37,16 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-/*
-app.use((req, res, next) => {
-  res.header({
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Credentials": "true",
-    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-    "Access-Control-Allow-Headers":
-      "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-  });
-  next();
-});
-*/
 
 app.use(helmet());
 
-// multer
 //Multer Middlwares - Creates the folder if doesn't exists
 app.use(MulterMiddleware.init);
 app.use(MulterMiddleware.mu);
 // Static files acceder a las imagenes por una url
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, config.RUTA_PUBLICA_IMAGENES)));
 
 //routes
-
 import nuevoFormulario from "./routes/nuevoFormulario.routes";
 import auth from "./routes/auth.routes";
 import empleado from "./routes/empleado.routes";
@@ -69,7 +55,6 @@ import guardaRevision from "./routes/guardaRevision.routes";
 import role from "./routes/role.routes";
 import inspector from "./routes/inspector.routes";
 import testigo from "./routes/testigo.routes";
-import images from "./routes/images.routes";
 import insOcular from "./routes/inspeccionOcular.routes";
 //rutas
 app.get("/", cors(corsOptions), function (req, res, next) {
@@ -96,7 +81,6 @@ app.use("/api/role", role);
 //Inspector API
 app.use("/api/inspector", inspector);
 app.use("/api/testigo", testigo);
-app.use("/api/images", images);
 app.use("/api/inspOcular", insOcular);
 
 export default app;

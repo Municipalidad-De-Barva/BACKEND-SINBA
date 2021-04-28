@@ -1,10 +1,10 @@
-//import config from "../config/config";
+import config from "../config/config";
 import multer from "multer";
 import path from "path";
 import {v4 as uuidv4} from "uuid";
 uuidv4();
 export const init = multer({
-  dest: path.join(__dirname, "../public/uploads"),
+  dest: path.join(__dirname, config.RUTA_FIRMA_TESTIGO),
   fileFilter: function (req, file, cb) {
     var filetypes = /jpeg|jpg|png/;
     var mimetype = filetypes.test(file.mimetype);
@@ -21,7 +21,7 @@ export const init = multer({
 }).single("image");
 
 export const storage = multer.diskStorage({
-  destination: path.join(__dirname, "../public/uploads"),
+  destination: path.join(__dirname, config.RUTA_FIRMA_TESTIGO),
   filename: (req, file, cb) => {
     cb(null, uuidv4().v4 + path.extname(file.originalname));
   },
