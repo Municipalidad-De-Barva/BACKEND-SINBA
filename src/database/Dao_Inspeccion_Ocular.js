@@ -15,7 +15,14 @@ export default class Dao_Inspeccion_Ocular extends dao {
     this.DaoTestigo = new daotestigo();
   }
 
+  async obtener_ocu(PK_ID, callback) {
 
+    const query = util.promisify(this.connection.query).bind(this.connection);
+    const rows = await query('SELECT * FROM inspeccion_ocular where PK_Codigo_Inspeccion = ?', [PK_ID]);
+
+    return rows;
+
+  }
 
 
   async listar_Inspecciones_Oculares() {
@@ -44,6 +51,32 @@ export default class Dao_Inspeccion_Ocular extends dao {
       lista.push(inspe);
     }
     console.log(lista);
+
+  }
+
+  async Obtener_Inspeccion_Ocular_Por_ID_Con_Objetos(PK_Codigo_Inspeccion) {
+
+    const DaoTestigo = new daotestigo();
+    const DaoInpeccion = new daoinspeccion();
+    const query = util.promisify(this.connection.query).bind(this.connection);
+    const rows = await query('SELECT * FROM inspeccion_ocular where PK_Codigo_Inspeccion = ?', [PK_Codigo_Inspeccion]);
+    const inp = await DaoInpeccion.obtener_inspeccion_patente_nueva(rows[0].FK_Inspeccion_Patente_Nueva);
+    const test1 = await DaoTestigo.obtener_Testigo2(rows[0].FK_Testigo1);
+    const test2 = await DaoTestigo.obtener_Testigo2(rows[0].FK_Testigo2);
+    var ocular = {
+      PK_Codigo_Inspeccion: rows[0].FK_Inspeccion_Patente_Nueva,
+      FK_Inspeccion_Patente_Nueva: inp,
+      Lugar_Visita: rows[0].Lugar_Visita,
+      Fecha: rows[0].Fecha,
+      Diligencia: rows[0].Diligencia,
+      Resultado: rows[0].Resultado,
+      FK_Testigo1: test1,
+      FK_Testigo2: test2,
+      Firma_Inspector_1: rows[0].Firma_Inspector_1,
+      Firma_Inspector_2: rows[0].Firma_Inspector_2,
+      Estado: rows[0].Estado
+    };
+    return ocular;
 
   }
 
