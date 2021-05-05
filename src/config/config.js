@@ -19,7 +19,8 @@ export default {
 
   /*Multer */
   RUTA_PUBLICA_IMAGENES: "../public",
-  RUTA_FIRMA_TESTIGO: `../public/firmaTestigo`,
+  RUTA_INSPECCION_NUEVA: "../public/inspeccionNueva",
+  RUTA_FIRMA_TESTIGO: "../public/firmaTestigo",
 };
 /*
  * Este archivo contiene configuraciones sobre el proyecto, como claves, puertos, etc

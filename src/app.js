@@ -4,7 +4,6 @@ import morgan from "morgan";
 import helmet from "helmet";
 import config from "./config/config";
 import pkg from "../package.json";
-import * as MulterMiddleware from "./middlewares/image-multer";
 
 // herramientas para cargar imagenes
 const path = require("path");
@@ -40,9 +39,6 @@ app.use(cors(corsOptions));
 
 app.use(helmet());
 
-//Multer Middlwares - Creates the folder if doesn't exists
-app.use(MulterMiddleware.init);
-app.use(MulterMiddleware.mu);
 // Static files acceder a las imagenes por una url
 app.use(express.static(path.join(__dirname, config.RUTA_PUBLICA_IMAGENES)));
 
