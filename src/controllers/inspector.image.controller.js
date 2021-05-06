@@ -52,11 +52,11 @@ export const insertar_Inspecciones_Patentes_Nuevas = async (req, res) => {
       Extintor,
       Salida_Emergencia,
     } = req.body;
-    const Firma =
+    const img =
       "/inspeccionNueva/" +
       req.file.filename +
       path.extname(req.file.originalname);
-    console.log(Firma);
+    console.log(img);
     inspector.insertar_Inspecciones_Patentes_Nuevas(
       FK_Inspector_Administrativo,
       FK_Solicitud_Patente,
@@ -69,7 +69,7 @@ export const insertar_Inspecciones_Patentes_Nuevas = async (req, res) => {
       Luces_Emergencias,
       Extintor,
       Salida_Emergencia,
-
+      img,
       function (result) {
         inspector.obtener_ultima_inspeccion_patente_(function (result) {
           console.log(result[0].PK_Codigo_Inspeccion);

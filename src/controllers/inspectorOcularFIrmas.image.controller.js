@@ -46,13 +46,13 @@ export const insertar_Inspeccion_Ocular = async (req, res) => {
     //Telefono_Testigo1,
     Tel_Testigo1,
     Correo_Testigo1,
-    //firma_testigo1,
+    firma_testigo1,
     //Datos del testigo #2
     FK_Testigo2,
     //Nombre_Completo_Testigo2,
     Tel_Testigo2,
     Correo_Testigo2,
-    //firma_testigo2,
+    firma_testigo2,
   } = req.body;
 
   inspeOcular.insertar_Inspeccion_Ocular(
@@ -65,12 +65,12 @@ export const insertar_Inspeccion_Ocular = async (req, res) => {
     //Nombre_Completo_Testigo1,
     Tel_Testigo1,
     Correo_Testigo1,
-    //firma_testigo1,
+    firma_testigo1,
     FK_Testigo2,
     //Nombre_Completo_Testigo2,
     Tel_Testigo2,
     Correo_Testigo2,
-    //firma_testigo2,
+    firma_testigo2,
     function (result) {
       return res.status(200).json(result);
     }

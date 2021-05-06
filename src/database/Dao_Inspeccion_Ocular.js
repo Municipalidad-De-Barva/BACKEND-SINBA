@@ -2,13 +2,9 @@ import dbConnection from "../config/dbConnection";
 import daotestigo from "./Dao_Testigo";
 import dao from "./Dao";
 import daoinspeccion from "./Dao_Inspeccion_Patente_Nueva";
-const util = require('util');
-
+const util = require("util");
 
 export default class Dao_Inspeccion_Ocular extends dao {
-
-
-
   constructor() {
     var carName = "c";
     super();
@@ -16,23 +12,25 @@ export default class Dao_Inspeccion_Ocular extends dao {
   }
 
   async obtener_ocu(PK_ID, callback) {
-
     const query = util.promisify(this.connection.query).bind(this.connection);
-    const rows = await query('SELECT * FROM inspeccion_ocular where PK_Codigo_Inspeccion = ?', [PK_ID]);
+    const rows = await query(
+      "SELECT * FROM inspeccion_ocular where PK_Codigo_Inspeccion = ?",
+      [PK_ID]
+    );
 
     return rows;
-
   }
-
 
   async listar_Inspecciones_Oculares() {
     const DaoTestigo = new daotestigo();
     const DaoInpeccion = new daoinspeccion();
     const query = util.promisify(this.connection.query).bind(this.connection);
-    const rows = await query('SELECT * FROM inspeccion_ocular');
-    var lista = []
+    const rows = await query("SELECT * FROM inspeccion_ocular");
+    var lista = [];
     for (var i = 0; i < rows.length; i++) {
-      const inp = await DaoInpeccion.obtener_inspeccion_patente_nueva(rows[i].FK_Inspeccion_Patente_Nueva);
+      const inp = await DaoInpeccion.obtener_inspeccion_patente_nueva(
+        rows[i].FK_Inspeccion_Patente_Nueva
+      );
       const test1 = await DaoTestigo.obtener_Testigo2(rows[i].FK_Testigo1);
       const test2 = await DaoTestigo.obtener_Testigo2(rows[i].FK_Testigo2);
       var inspe = {
@@ -46,21 +44,24 @@ export default class Dao_Inspeccion_Ocular extends dao {
         FK_Testigo2: test2,
         Firma_Inspector_1: rows[i].Firma_Inspector_1,
         Firma_Inspector_2: rows[i].Firma_Inspector_2,
-        Estado: rows[i].Estado
+        Estado: rows[i].Estado,
       };
       lista.push(inspe);
     }
     console.log(lista);
-
   }
 
   async Obtener_Inspeccion_Ocular_Por_ID_Con_Objetos(PK_Codigo_Inspeccion) {
-
     const DaoTestigo = new daotestigo();
     const DaoInpeccion = new daoinspeccion();
     const query = util.promisify(this.connection.query).bind(this.connection);
-    const rows = await query('SELECT * FROM inspeccion_ocular where PK_Codigo_Inspeccion = ?', [PK_Codigo_Inspeccion]);
-    const inp = await DaoInpeccion.obtener_inspeccion_patente_nueva(rows[0].FK_Inspeccion_Patente_Nueva);
+    const rows = await query(
+      "SELECT * FROM inspeccion_ocular where PK_Codigo_Inspeccion = ?",
+      [PK_Codigo_Inspeccion]
+    );
+    const inp = await DaoInpeccion.obtener_inspeccion_patente_nueva(
+      rows[0].FK_Inspeccion_Patente_Nueva
+    );
     const test1 = await DaoTestigo.obtener_Testigo2(rows[0].FK_Testigo1);
     const test2 = await DaoTestigo.obtener_Testigo2(rows[0].FK_Testigo2);
     var ocular = {
@@ -74,17 +75,10 @@ export default class Dao_Inspeccion_Ocular extends dao {
       FK_Testigo2: test2,
       Firma_Inspector_1: rows[0].Firma_Inspector_1,
       Firma_Inspector_2: rows[0].Firma_Inspector_2,
-      Estado: rows[0].Estado
+      Estado: rows[0].Estado,
     };
     return ocular;
-
   }
-
-
-
-
-
-
 
   insertar_Inspeccion_Ocular(
     // Datos de la inpeccion ocular
@@ -95,12 +89,15 @@ export default class Dao_Inspeccion_Ocular extends dao {
     Resultado,
     // Datos del testigo #1
     FK_Testigo1,
+
     Telefono_Testigo1,
     Correo_Testigo1,
+    firma_testigo1,
     //Datos del testigo #2
     FK_Testigo2,
     Telefono_Testigo2,
     Correo_Testigo2,
+    firma_testigo2,
     callback
   ) {
     const DaoTestigo = new daotestigo();
@@ -111,6 +108,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
       FK_Testigo1,
       Telefono_Testigo1,
       Correo_Testigo1,
+      firma_testigo1,
       function (result) {
         if (result === "Se ingreso nuevo testigo") {
           // Insertar testigo2
@@ -118,6 +116,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
             FK_Testigo2,
             Telefono_Testigo2,
             Correo_Testigo2,
+            firma_testigo2,
             function (result) {
               if (result === "Se ingreso nuevo testigo") {
                 const connection = dbConnection();
@@ -133,7 +132,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
                     Resultado,
                     FK_Testigo1,
                     FK_Testigo2,
-                    Estado: "Pendiente"
+                    Estado: "Pendiente",
                   },
                   function (err, results) {
                     if (err) {
