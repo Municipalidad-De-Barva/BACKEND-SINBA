@@ -198,4 +198,14 @@ export default class Dao_Inspeccion_Ocular extends dao {
       }
     );
   }
+
+
+  async Cambiar_Estado_Inspeccion_Ocular(ID_OCULAR, ESTADO) {
+
+    const query = util.promisify(this.connection.query).bind(this.connection);
+    const rows = await query('UPDATE inspeccion_ocular SET Estado = ? where PK_Codigo_Inspeccion = ?', [ESTADO, ID_OCULAR]);
+
+  }
+
+
 }
