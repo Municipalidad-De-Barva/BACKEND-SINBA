@@ -65,7 +65,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
     const test1 = await DaoTestigo.obtener_Testigo2(rows[0].FK_Testigo1);
     const test2 = await DaoTestigo.obtener_Testigo2(rows[0].FK_Testigo2);
     var ocular = {
-      PK_Codigo_Inspeccion: rows[0].FK_Inspeccion_Patente_Nueva,
+      PK_Codigo_Inspeccion: rows[0].PK_Codigo_Inspeccion,
       FK_Inspeccion_Patente_Nueva: inp,
       Lugar_Visita: rows[0].Lugar_Visita,
       Fecha: rows[0].Fecha,
