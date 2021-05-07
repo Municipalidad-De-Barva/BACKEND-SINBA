@@ -6,7 +6,7 @@ const util = require("util");
 
 export default class Dao_Inspeccion_Ocular extends dao {
   constructor() {
-    var carName = "c";
+    //var carName = "c";
     super();
     this.DaoTestigo = new daotestigo();
   }
@@ -34,7 +34,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
       const test1 = await DaoTestigo.obtener_Testigo2(rows[i].FK_Testigo1);
       const test2 = await DaoTestigo.obtener_Testigo2(rows[i].FK_Testigo2);
       var inspe = {
-        PK_Codigo_Inspeccion: rows[i].FK_Inspeccion_Patente_Nueva,
+        PK_Codigo_Inspeccion: rows[i].PK_Codigo_Inspeccion,
         FK_Inspeccion_Patente_Nueva: inp,
         Lugar_Visita: rows[i].Lugar_Visita,
         Fecha: rows[i].Fecha,
@@ -56,27 +56,34 @@ export default class Dao_Inspeccion_Ocular extends dao {
     const DaoTestigo = new daotestigo();
     const DaoInpeccion = new daoinspeccion();
     const query = util.promisify(this.connection.query).bind(this.connection);
-    const rows = await query(
+    let new1=PK_Codigo_Inspeccion;
+    console.log(new1);
+    new1 = new1.substring(1);
+    new1 = new1.substring(new1.length);
+    console.log("mi actual"+PK_Codigo_Inspeccion);
+    const rows =  await query(
       "SELECT * FROM inspeccion_ocular where PK_Codigo_Inspeccion = ?",
       [PK_Codigo_Inspeccion]
     );
+    //console.log("mis datos"+JSON.stringify(rows[0]));
     const inp = await DaoInpeccion.obtener_inspeccion_patente_nueva(
-      rows.FK_Inspeccion_Patente_Nueva
+      rows[0].FK_Inspeccion_Patente_Nueva
     );
-    const test1 = await DaoTestigo.obtener_Testigo2(rows.FK_Testigo1);
-    const test2 = await DaoTestigo.obtener_Testigo2(rows.FK_Testigo2);
+    //console.log("mis INP"+JSON.stringify(inp[0]));
+    const test1 = await DaoTestigo.obtener_Testigo2(rows[0].FK_Testigo1);
+    const test2 = await DaoTestigo.obtener_Testigo2(rows[0].FK_Testigo2);
     var ocular = {
-      PK_Codigo_Inspeccion: rows.PK_Codigo_Inspeccion,
+      PK_Codigo_Inspeccion: rows[0].PK_Codigo_Inspeccion,
       FK_Inspeccion_Patente_Nueva: inp,
-      Lugar_Visita: rows.Lugar_Visita,
-      Fecha: rows.Fecha,
-      Diligencia: rows.Diligencia,
-      Resultado: rows.Resultado,
+      Lugar_Visita: rows[0].Lugar_Visita,
+      Fecha: rows[0].Fecha,
+      Diligencia: rows[0].Diligencia,
+      Resultado: rows[0].Resultado,
       FK_Testigo1: test1,
       FK_Testigo2: test2,
-      Firma_Inspector_1: rows.Firma_Inspector_1,
-      Firma_Inspector_2: rows.Firma_Inspector_2,
-      Estado: rows.Estado,
+      Firma_Inspector_1: rows[0].Firma_Inspector_1,
+      Firma_Inspector_2: rows[0].Firma_Inspector_2,
+      Estado: rows[0].Estado,
     };
     return ocular;
   }
