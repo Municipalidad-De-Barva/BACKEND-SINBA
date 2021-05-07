@@ -19,43 +19,6 @@ export const listar_Inspecciones_Patentes_Nuevas = async (req, res) => {
   return null;
 };
 
-export const insertar_Inspecciones_Patentes_Nuevas = async (req, res) => {
-  const {
-    FK_Inspector_Administrativo,
-    FK_Solicitud_Patente,
-    Descripcion,
-    Local,
-    Direccion,
-    Requisito_Local_Acorde_Actividad,
-    Planta_Fisica,
-    Senalizacion,
-    Luces_Emergencias,
-    Extintor,
-    Salida_Emergencia,
-  } = req.body;
-
-  inspector.insertar_Inspecciones_Patentes_Nuevas(
-    FK_Inspector_Administrativo,
-    FK_Solicitud_Patente,
-    Descripcion,
-    Local,
-    Direccion,
-    Requisito_Local_Acorde_Actividad,
-    Planta_Fisica,
-    Senalizacion,
-    Luces_Emergencias,
-    Extintor,
-    Salida_Emergencia,
-
-    function (result) {
-      inspector.obtener_ultima_inspeccion_patente_(function (result) {
-        console.log(result[0].PK_Codigo_Inspeccion);
-        return res.status(200).json(result[0]);
-      });
-    }
-  );
-};
-
 export const obtener_inspeccion_patente_nueva_codigo = async (req, res) => {
   console.log(req.body);
 
@@ -100,3 +63,40 @@ export const actualizar_Datos_Inspeccion_Patente_Nueva = async (req, res) => {
     }
   );
 };
+
+// export const insertar_Inspecciones_Patentes_Nuevas = async (req, res) => {
+//   const {
+//     FK_Inspector_Administrativo,
+//     FK_Solicitud_Patente,
+//     Descripcion,
+//     Local,
+//     Direccion,
+//     Requisito_Local_Acorde_Actividad,
+//     Planta_Fisica,
+//     Senalizacion,
+//     Luces_Emergencias,
+//     Extintor,
+//     Salida_Emergencia,
+//   } = req.body;
+
+//   inspector.insertar_Inspecciones_Patentes_Nuevas(
+//     FK_Inspector_Administrativo,
+//     FK_Solicitud_Patente,
+//     Descripcion,
+//     Local,
+//     Direccion,
+//     Requisito_Local_Acorde_Actividad,
+//     Planta_Fisica,
+//     Senalizacion,
+//     Luces_Emergencias,
+//     Extintor,
+//     Salida_Emergencia,
+
+//     function (result) {
+//       inspector.obtener_ultima_inspeccion_patente_(function (result) {
+//         console.log(result[0].PK_Codigo_Inspeccion);
+//         return res.status(200).json(result[0]);
+//       });
+//     }
+//   );
+// };

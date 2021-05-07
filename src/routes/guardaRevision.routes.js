@@ -64,8 +64,6 @@ router.post("/", (req, res) => {
         res.json("ok");
       }
     );
-
-    // res.json('ok');
   }
 });
 
