@@ -1,5 +1,7 @@
 import dbConnection from "../config/dbConnection";
 import daotestigo from "./Dao_Testigo";
+import daosolicitud from "./DaoSolicitud_Patente";
+import daocontri from "./DaoContribuyente";
 import dao from "./Dao";
 import daoinspeccion from "./Dao_Inspeccion_Patente_Nueva";
 const util = require("util");
@@ -19,6 +21,43 @@ export default class Dao_Inspeccion_Ocular extends dao {
     );
 
     return rows;
+  }
+
+  async obtener_contribuyente_ocular(PK_Codigo_Inspeccion) {
+    const DaoInpeccion = new daoinspeccion();
+    const DaoSolicitudPatente = new daosolicitud();
+    const DaoContribuyente = new daocontri();
+    const query = util.promisify(this.connection.query).bind(this.connection);
+    const rows = await query(
+      "SELECT * FROM inspeccion_ocular where PK_Codigo_Inspeccion = ?",
+      [PK_Codigo_Inspeccion]
+    );
+    const inpeccion = await DaoInpeccion.obtener_inspeccion_patente_nueva(
+      rows[0].FK_Inspeccion_Patente_Nueva
+    );
+
+    const resultinspeccion = Object.values(JSON.parse(JSON.stringify(inpeccion)));
+
+    const solicitud = await DaoSolicitudPatente.obtener_solicitud_patente(
+      resultinspeccion[0].FK_Solicitud_Patente
+    );
+
+    const resultsoli = Object.values(JSON.parse(JSON.stringify(solicitud)));
+
+    const contri = await DaoContribuyente.obtenerContribuyenteIDasync(
+      resultsoli[0].FK_ID_Contribuyente
+    );
+
+    const resultcontri = Object.values(JSON.parse(JSON.stringify(contri)));
+
+    var contribuyente = {
+      Nombre: resultcontri[0].Nombre,
+      Telefono: resultcontri[0].Telefono,
+      Correo: resultcontri[0].Correo
+    };
+
+    return contribuyente;
+
   }
 
   async listar_Inspecciones_Oculares() {
@@ -56,12 +95,12 @@ export default class Dao_Inspeccion_Ocular extends dao {
     const DaoTestigo = new daotestigo();
     const DaoInpeccion = new daoinspeccion();
     const query = util.promisify(this.connection.query).bind(this.connection);
-    let new1=PK_Codigo_Inspeccion;
+    let new1 = PK_Codigo_Inspeccion;
     console.log(new1);
     new1 = new1.substring(1);
     new1 = new1.substring(new1.length);
-    console.log("mi actual"+PK_Codigo_Inspeccion);
-    const rows =  await query(
+    console.log("mi actual" + PK_Codigo_Inspeccion);
+    const rows = await query(
       "SELECT * FROM inspeccion_ocular where PK_Codigo_Inspeccion = ?",
       [PK_Codigo_Inspeccion]
     );

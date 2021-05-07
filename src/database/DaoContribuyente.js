@@ -1,6 +1,8 @@
 import dbConnection from "../config/dbConnection";
 import daoUsuario from "./DaoUsuario";
 import dao from "./Dao";
+const util = require("util");
+
 export default class DaoContribuyente extends dao {
   constructor() {
     super();
@@ -24,6 +26,15 @@ export default class DaoContribuyente extends dao {
       }
       return callback(mostrarMensaje);
     });
+  }
+
+  async obtenerContribuyenteIDasync(PK_ID) {
+    const query = util.promisify(this.connection.query).bind(this.connection);
+    const soli = await query(
+      "SELECT* FROM contribuyente WHERE PK_ID = ? ",
+      [PK_ID]
+    );
+    return soli;
   }
 
   obtener_ContribuyenteID(PK_ID, callback) {

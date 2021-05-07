@@ -1,6 +1,8 @@
 import dbConnection from "../config/dbConnection";
 import daoUsuario from "./DaoContribuyente";
 import dao from "./Dao";
+const util = require("util");
+
 export default class DaoSolicitud_Patente extends dao {
   constructor() {
     super();
@@ -162,6 +164,14 @@ export default class DaoSolicitud_Patente extends dao {
   // Este método llamado obtener_Solicitud_Codigo,
   //Lo que hace es retornar el objeto de la base de datos cuyo PK_Codigo coincide con el que
   //viene por paramtero...
+  async obtener_solicitud_patente(PK_Codigo) {
+    const query = util.promisify(this.connection.query).bind(this.connection);
+    const soli = await query(
+      "SELECT * FROM solicitud_patente where PK_Codigo = ? ",
+      [PK_Codigo]
+    );
+    return soli;
+  }
 
   obtener_Solicitud_Codigo(PK_Codigo, callback) {
     var sql = "SELECT * FROM solicitud_patente where PK_Codigo = ? ";
