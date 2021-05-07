@@ -19,7 +19,7 @@ export const obtener_ocu = async (req, res) => {
   });
 };
 export const listar_Inspecciones_Oculares = async (req, res) => {
-  let result = inspeOcular.listar_Inspecciones_Oculares();
+  let result = await inspeOcular.listar_Inspecciones_Oculares();
   return res.status(200).json(result);
 };
 
@@ -29,7 +29,7 @@ export const Obtener_Inspeccion_Ocular_Por_ID_Con_Objetos = async (
 ) => {
   const {PK_Codigo_Inspeccion} = req.body;
 
-  let result = inspeOcular.Obtener_Inspeccion_Ocular_Por_ID_Con_Objetos(
+  let result = await inspeOcular.Obtener_Inspeccion_Ocular_Por_ID_Con_Objetos(
     PK_Codigo_Inspeccion
   );
   return res.status(200).json(result);

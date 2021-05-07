@@ -9,7 +9,7 @@ export default {
 
   /*DATABASE*/
   USERNAME_DB: "root",
-  PASSWORD_DB: "password",
+  PASSWORD_DB: "root",
   DATABASE_DB: "inspecciones_barva",
   HOST_DB: "localhost",
 
