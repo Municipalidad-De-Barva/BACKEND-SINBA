@@ -28,14 +28,13 @@ export const Obtener_Inspeccion_Ocular_Por_ID_Con_Objetos = async (
 ) => {
   const {PK_Codigo_Inspeccion} = req.body;
   console.log(PK_Codigo_Inspeccion);
-  async function run(){
+  async function run() {
     let result = await inspeOcular.Obtener_Inspeccion_Ocular_Por_ID_Con_Objetos(
-    PK_Codigo_Inspeccion
+      PK_Codigo_Inspeccion
     );
     return res.status(200).json(result);
   }
   run();
-  
 };
 
 export const insertar_Inspeccion_Ocular = async (req, res) => {
@@ -110,4 +109,11 @@ export const Cambiar_Estado_Inspeccion_Ocular = async (req, res) => {
   const {ID_OCULAR, ESTADO} = req.body;
   inspeOcular.Cambiar_Estado_Inspeccion_Ocular(ID_OCULAR, ESTADO);
   return res.status(200).text("El Estado se ha cambiado");
+};
+
+export const obtener_contribuyente_ocular = async (req, res) => {
+  let result = await inspeOcular.obtener_contribuyente_ocular(
+    req.PK_Codigo_Inspeccion
+  );
+  return res.status(200).json(result);
 };

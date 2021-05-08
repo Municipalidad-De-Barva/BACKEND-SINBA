@@ -30,10 +30,9 @@ export default class DaoContribuyente extends dao {
 
   async obtenerContribuyenteIDasync(PK_ID) {
     const query = util.promisify(this.connection.query).bind(this.connection);
-    const soli = await query(
-      "SELECT* FROM contribuyente WHERE PK_ID = ? ",
-      [PK_ID]
-    );
+    const soli = await query("SELECT* FROM contribuyente WHERE PK_ID = ? ", [
+      PK_ID,
+    ]);
     return soli;
   }
 

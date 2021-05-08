@@ -1,11 +1,17 @@
 const {Router} = require("express");
-const {object} = require("underscore");
 const router = Router();
 import DaoContribuyente from "../database/DaoContribuyente";
 import daoSolicitud from "../database/DaoSolicitud_Patente";
 
 const soli = new daoSolicitud();
 const contri = new DaoContribuyente();
+
+const {object} = require("underscore");
+
+router.post("/obtenerSolicitudPatente", async (req, res) => {
+  let result = await soli.obtener_solicitud_patente(req.PK_Codigo);
+  return res.status(200).json(result);
+});
 
 router.get("/", (req, res) => {
   soli.listar_Solicitud_Patentes(function (result) {
