@@ -43,7 +43,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
     );
 
     const solicitud = await DaoSolicitudPatente.obtener_solicitud_patente(
-      resultinspeccion.FK_Solicitud_Patente
+      resultinspeccion[0].FK_Solicitud_Patente
     );
 
     const resultsoli = Object.values(JSON.parse(JSON.stringify(solicitud)));
