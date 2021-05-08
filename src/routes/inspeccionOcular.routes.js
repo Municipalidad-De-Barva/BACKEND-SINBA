@@ -22,4 +22,9 @@ router.get(
 );
 
 router.post("/obtenerOcu", insOcularCtrl.obtener_ocu);
+
+router.post(
+  "/obtenerContribuyenteOcular",
+  insOcularCtrl.obtener_contribuyente_ocular
+);
 export default router;

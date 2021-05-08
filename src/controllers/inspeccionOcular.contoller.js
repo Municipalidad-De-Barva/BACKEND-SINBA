@@ -112,8 +112,9 @@ export const Cambiar_Estado_Inspeccion_Ocular = async (req, res) => {
 };
 
 export const obtener_contribuyente_ocular = async (req, res) => {
+  const {PK_Codigo_Inspeccion} = req.body;
   let result = await inspeOcular.obtener_contribuyente_ocular(
-    req.PK_Codigo_Inspeccion
+    PK_Codigo_Inspeccion
   );
   return res.status(200).json(result);
 };

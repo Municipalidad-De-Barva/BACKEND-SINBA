@@ -24,6 +24,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
   }
 
   async obtener_contribuyente_ocular(PK_Codigo_Inspeccion) {
+    console.log("PK_Codigo_Inspeccion", PK_Codigo_Inspeccion);
     const DaoInpeccion = new daoinspeccion();
     const DaoSolicitudPatente = new daosolicitud();
     const DaoContribuyente = new daocontri();
@@ -32,14 +33,17 @@ export default class Dao_Inspeccion_Ocular extends dao {
       "SELECT * FROM inspeccion_ocular where PK_Codigo_Inspeccion = ?",
       [PK_Codigo_Inspeccion]
     );
+    console.log("datos", JSON.stringify(rows));
     const inpeccion = await DaoInpeccion.obtener_inspeccion_patente_nueva(
       rows[0].FK_Inspeccion_Patente_Nueva
     );
 
-    const resultinspeccion = Object.values(JSON.parse(JSON.stringify(inpeccion)));
+    const resultinspeccion = Object.values(
+      JSON.parse(JSON.stringify(inpeccion))
+    );
 
     const solicitud = await DaoSolicitudPatente.obtener_solicitud_patente(
-      resultinspeccion[0].FK_Solicitud_Patente
+      resultinspeccion.FK_Solicitud_Patente
     );
 
     const resultsoli = Object.values(JSON.parse(JSON.stringify(solicitud)));
@@ -53,11 +57,10 @@ export default class Dao_Inspeccion_Ocular extends dao {
     var contribuyente = {
       Nombre: resultcontri[0].Nombre,
       Telefono: resultcontri[0].Telefono,
-      Correo: resultcontri[0].Correo
+      Correo: resultcontri[0].Correo,
     };
 
     return contribuyente;
-
   }
 
   async listar_Inspecciones_Oculares() {
