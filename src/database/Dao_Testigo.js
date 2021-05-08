@@ -1,7 +1,7 @@
 import dbConnection from "../config/dbConnection";
 import dao from "./Dao";
-const { appConfig } = require("../config/config");
-const util = require('util');
+const {appConfig} = require("../config/config");
+const util = require("util");
 
 export default class Dao_Testigo extends dao {
   constructor() {
@@ -78,15 +78,14 @@ export default class Dao_Testigo extends dao {
 
   async listar_Testigos2() {
     const query = util.promisify(this.connection.query).bind(this.connection);
-    const rows = await query('SELECT * FROM testigo');
+    const rows = await query("SELECT * FROM testigo");
     return rows;
   }
-  async obtener_Testigo2(PK_ID, callback) {
 
+  async obtener_Testigo2(PK_ID, callback) {
     const query = util.promisify(this.connection.query).bind(this.connection);
-    const rows = await query('SELECT* FROM testigo WHERE PK_ID = ?', [PK_ID]);
+    const rows = await query("SELECT* FROM testigo WHERE PK_ID = ?", [PK_ID]);
 
     return rows;
-
   }
 }

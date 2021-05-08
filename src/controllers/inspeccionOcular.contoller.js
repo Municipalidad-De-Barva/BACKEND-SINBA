@@ -106,8 +106,12 @@ export const actualizar_Datos_Inspeccion_Ocular = async (req, res) => {
 };
 
 export const Cambiar_Estado_Inspeccion_Ocular = async (req, res) => {
-  const {ID_OCULAR, ESTADO} = req.body;
-  inspeOcular.Cambiar_Estado_Inspeccion_Ocular(ID_OCULAR, ESTADO);
+  const {PK_Codigo_Inspeccion, Estado} = req.body;
+  console.log("cambio de estado", req.body);
+  await inspeOcular.Cambiar_Estado_Inspeccion_Ocular(
+    PK_Codigo_Inspeccion,
+    Estado
+  );
   return res.status(200).text("El Estado se ha cambiado");
 };
 

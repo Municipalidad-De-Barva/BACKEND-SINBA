@@ -47,7 +47,7 @@ export default class Dao_Inspeccion_Patente_Nueva extends dao {
     Luces_Emergencias,
     Extintor,
     Salida_Emergencia,
-    img,
+
     callback
   ) {
     var moment = require("moment");
@@ -70,7 +70,6 @@ export default class Dao_Inspeccion_Patente_Nueva extends dao {
         Luces_Emergencias,
         Extintor,
         Salida_Emergencia,
-        img,
       },
       function (err, results) {
         if (err) {

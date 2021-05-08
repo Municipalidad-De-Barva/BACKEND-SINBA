@@ -142,12 +142,12 @@ export default class Dao_Inspeccion_Ocular extends dao {
 
     Telefono_Testigo1,
     Correo_Testigo1,
-    firma_testigo1,
+    //firma_testigo1,
     //Datos del testigo #2
     FK_Testigo2,
     Telefono_Testigo2,
     Correo_Testigo2,
-    firma_testigo2,
+    //firma_testigo2,
     callback
   ) {
     const DaoTestigo = new daotestigo();
@@ -158,7 +158,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
       FK_Testigo1,
       Telefono_Testigo1,
       Correo_Testigo1,
-      firma_testigo1,
+      //firma_testigo1,
       function (result) {
         if (result === "Se ingreso nuevo testigo") {
           // Insertar testigo2
@@ -166,7 +166,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
             FK_Testigo2,
             Telefono_Testigo2,
             Correo_Testigo2,
-            firma_testigo2,
+            //firma_testigo2,
             function (result) {
               if (result === "Se ingreso nuevo testigo") {
                 const connection = dbConnection();
@@ -249,6 +249,8 @@ export default class Dao_Inspeccion_Ocular extends dao {
   }
 
   async Cambiar_Estado_Inspeccion_Ocular(ID_OCULAR, ESTADO) {
+    console.log("ID_OCULAR", ID_OCULAR);
+    console.log("ESTADO", ESTADO);
     const query = util.promisify(this.connection.query).bind(this.connection);
     const rows = await query(
       "UPDATE inspeccion_ocular SET Estado = ? where PK_Codigo_Inspeccion = ?",
