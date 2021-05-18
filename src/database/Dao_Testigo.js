@@ -1,6 +1,7 @@
+import { boolean } from "@hapi/joi";
 import dbConnection from "../config/dbConnection";
 import dao from "./Dao";
-const {appConfig} = require("../config/config");
+const { appConfig } = require("../config/config");
 const util = require("util");
 
 export default class Dao_Testigo extends dao {
@@ -43,6 +44,12 @@ export default class Dao_Testigo extends dao {
     });
   }
 
+
+  async insertar_Testigo2(PK_ID, Telefono, Correo) {
+    const query = util.promisify(this.connection.query).bind(this.connection);
+    const rows = await query("INSERT INTO testigo SET ?", { PK_ID, Telefono, Correo });
+  }
+
   insertar_Testigo(PK_ID, Telefono, Correo, callback) {
     const connection = dbConnection();
     var sql = "INSERT INTO testigo SET ?";
@@ -82,7 +89,25 @@ export default class Dao_Testigo extends dao {
     return rows;
   }
 
-  async obtener_Testigo2(PK_ID, callback) {
+  async verificar_Existencia(PK_ID) {
+
+    var resultado = false;
+
+    const query = util.promisify(this.connection.query).bind(this.connection);
+    const rows = await query("SELECT* FROM testigo WHERE PK_ID = ?", [PK_ID]);
+
+    if (rows.length === 0) {
+      resultado = false;
+    }
+    else {
+      resultado = true;
+    }
+
+    return resultado;
+
+  }
+
+  async obtener_Testigo2(PK_ID) {
     const query = util.promisify(this.connection.query).bind(this.connection);
     const rows = await query("SELECT* FROM testigo WHERE PK_ID = ?", [PK_ID]);
 

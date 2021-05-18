@@ -130,6 +130,57 @@ export default class Dao_Inspeccion_Ocular extends dao {
     return ocular;
   }
 
+  async insertar_Inspeccion_Ocular_Prueba(FK_Inspeccion_Patente_Nueva, Lugar_Visita, Fecha, Diligencia, Resultado, FK_Testigo1, Telefono_Testigo1, Correo_Testigo1, FK_Testigo2, Telefono_Testigo2, Correo_Testigo2) {
+
+    const query = util.promisify(this.connection.query).bind(this.connection);
+
+    const DaoTestigo = new daotestigo();
+    var Test1ced;
+    var Test2ced;
+    const test1 = await DaoTestigo.verificar_Existencia(FK_Testigo1);
+    if (test1 === true) {
+      const test2 = await DaoTestigo.obtener_Testigo2(FK_Testigo1);
+      const resultcontri = Object.values(JSON.parse(JSON.stringify(test2)));
+      Test1ced = resultcontri[0].PK_ID;
+    }
+    else if (test1 === false) {
+
+      console.log("No existe...");
+      const test3 = await DaoTestigo.insertar_Testigo2(FK_Testigo1, Telefono_Testigo1, Correo_Testigo1);
+      const test4 = await DaoTestigo.obtener_Testigo2(FK_Testigo1);
+      const resultcontri2 = Object.values(JSON.parse(JSON.stringify(test4)));
+      Test1ced = resultcontri2[0].PK_ID;
+
+    }
+    const test6 = await DaoTestigo.verificar_Existencia(FK_Testigo2);
+    if (test6 === true) {
+      const test7 = await DaoTestigo.obtener_Testigo2(FK_Testigo2);
+      const resultcontri3 = Object.values(JSON.parse(JSON.stringify(test7)));
+      Test2ced = resultcontri3[0].PK_ID;
+    }
+    else if (test6 === false) {
+
+      console.log("No existe...");
+      const test8 = await DaoTestigo.insertar_Testigo2(FK_Testigo2, Telefono_Testigo2, Correo_Testigo2);
+      const test9 = await DaoTestigo.obtener_Testigo2(FK_Testigo2);
+      const resultcontri4 = Object.values(JSON.parse(JSON.stringify(test9)));
+      Test2ced = resultcontri4[0].PK_ID;
+
+    }
+
+    const rows = await query("INSERT INTO inspeccion_ocular SET ?", {
+      FK_Inspeccion_Patente_Nueva,
+      Lugar_Visita,
+      Fecha,
+      Diligencia,
+      Resultado,
+      FK_Testigo1: Test1ced,
+      FK_Testigo2: Test2ced,
+      Estado: "Pendiente",
+    });
+
+  }
+
   insertar_Inspeccion_Ocular(
     // Datos de la inpeccion ocular
     FK_Inspeccion_Patente_Nueva, //Corresponde al código (LLave Primaria) de la tabla inspeccion_patente_nueva;
