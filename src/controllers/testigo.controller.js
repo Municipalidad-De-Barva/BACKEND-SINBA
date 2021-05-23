@@ -1,6 +1,6 @@
 import daoTestigo from "../database/Dao_Testigo";
 const testigo = new daoTestigo();
-import path from "path";
+//import path from "path";
 export const obtener_Testigo = async (req, res) => {
   const {PK_ID} = req.body;
 
@@ -15,8 +15,8 @@ export const obtener_Testigo = async (req, res) => {
 export const insertar_Testigo = async (req, res) => {
   const {PK_ID, Nombre_Completo, Telefono, Correo} = req.body;
   const Firma =
-    "/firmaTestigo/" + req.file.filename + path.extname(req.file.originalname);
-  console.log("nombre del archivo: ", Firma);
+    //"/firmaTestigo/" + req.file.filename + path.extname(req.file.originalname);
+    console.log("nombre del archivo: ", Firma);
   testigo.insertar_Testigo(
     PK_ID,
     Nombre_Completo,

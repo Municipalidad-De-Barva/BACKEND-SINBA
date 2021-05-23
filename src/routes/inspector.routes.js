@@ -9,7 +9,7 @@ router.get("/obtener", inspectorCtrl.obtener_inspeccion_patente_nueva_codigo);
 
 router.get("/obtenerNumero", inspectorCtrl.obtenerNumero);
 
-router.post("/agregar", inspectorCtrlImg.insertar_Inspecciones_Patentes_Nuevas);
+router.post("/agregar", inspectorCtrl.insertar_Inspecciones_Patentes_Nuevas);
 
 router.post("/agregar_imagen", inspectorCtrlImg.insertar_imagen);
 

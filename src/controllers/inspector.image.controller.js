@@ -1,15 +1,15 @@
 import config from "../config/config";
 import multer from "multer";
 import path from "path";
-import {v4 as uuidv4} from "uuid";
-uuidv4();
+
 import daoInspector from "../database/Dao_Inspeccion_Patente_Nueva";
 const inspector = new daoInspector();
 
 export const storage = multer.diskStorage({
   destination: path.join(__dirname, config.RUTA_INSPECCION_NUEVA),
   filename: (req, file, cb) => {
-    cb(null, uuidv4().v4 + path.extname(file.originalname));
+    const img = req.file.filename + path.extname(req.file.originalname);
+    cb(null, +img);
   },
 });
 
@@ -31,7 +31,6 @@ export const Upload = multer({
 }).single("image");
 
 export const insertar_imagen = async (req, res) => {
-  console.log("he llegado al metodo insertar imagen postIspeccion", req.body);
   Upload(req, res, (err) => {
     if (err) {
       err.message = "The file is so heavy for my service";
@@ -43,44 +42,6 @@ export const insertar_imagen = async (req, res) => {
       req.file.filename +
       path.extname(req.file.originalname);
     console.log("ruta de la imagen", img);
+    res.send("imagen agregada inspeccion");
   });
-};
-
-export const insertar_Inspecciones_Patentes_Nuevas = async (req, res) => {
-  res.send("uploaded");
-
-  const {
-    FK_Inspector_Administrativo,
-    FK_Solicitud_Patente,
-    Descripcion,
-    Local,
-    Direccion,
-    Requisito_Local_Acorde_Actividad,
-    Planta_Fisica,
-    Senalizacion,
-    Luces_Emergencias,
-    Extintor,
-    Salida_Emergencia,
-  } = req.body;
-
-  inspector.insertar_Inspecciones_Patentes_Nuevas(
-    FK_Inspector_Administrativo,
-    FK_Solicitud_Patente,
-    Descripcion,
-    Local,
-    Direccion,
-    Requisito_Local_Acorde_Actividad,
-    Planta_Fisica,
-    Senalizacion,
-    Luces_Emergencias,
-    Extintor,
-    Salida_Emergencia,
-
-    function (result) {
-      inspector.obtener_ultima_inspeccion_patente_(function (result) {
-        console.log(result[0].PK_Codigo_Inspeccion);
-        return res.status(200).json(result[0]);
-      });
-    }
-  );
 };

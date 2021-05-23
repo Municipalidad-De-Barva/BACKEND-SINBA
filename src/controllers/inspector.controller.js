@@ -1,6 +1,45 @@
 import daoInspector from "../database/Dao_Inspeccion_Patente_Nueva";
 const inspector = new daoInspector();
 
+export const insertar_Inspecciones_Patentes_Nuevas = async (req, res) => {
+  res.send("uploaded");
+
+  const {
+    FK_Inspector_Administrativo,
+    FK_Solicitud_Patente,
+    Descripcion,
+    Local,
+    Direccion,
+    Requisito_Local_Acorde_Actividad,
+    Planta_Fisica,
+    Senalizacion,
+    Luces_Emergencias,
+    Extintor,
+    Salida_Emergencia,
+  } = req.body;
+
+  inspector.insertar_Inspecciones_Patentes_Nuevas(
+    FK_Inspector_Administrativo,
+    FK_Solicitud_Patente,
+    Descripcion,
+    Local,
+    Direccion,
+    Requisito_Local_Acorde_Actividad,
+    Planta_Fisica,
+    Senalizacion,
+    Luces_Emergencias,
+    Extintor,
+    Salida_Emergencia,
+
+    function (result) {
+      inspector.obtener_ultima_inspeccion_patente_(function (result) {
+        console.log(result[0].PK_Codigo_Inspeccion);
+        return res.status(200).json(result[0]);
+      });
+    }
+  );
+};
+
 export const obtenerNumero = async (req, res) => {
   inspector.obtener_ultima_inspeccion_patente_(function (result) {
     console.log(result[0].PK_Codigo_Inspeccion);
