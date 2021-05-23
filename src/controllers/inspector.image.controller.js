@@ -28,9 +28,10 @@ export const Upload = multer({
     );
   },
   limits: {fileSize: 10000000},
-}).single("image");
+}).single("userpic");
 
 export const insertar_imagen = async (req, res) => {
+  console.log("metodo insertar_imagen");
   Upload(req, res, (err) => {
     if (err) {
       err.message = "The file is so heavy for my service";
