@@ -11,6 +11,8 @@ router.get("/obtenerNumero", inspectorCtrl.obtenerNumero);
 
 router.post("/agregar", inspectorCtrlImg.insertar_Inspecciones_Patentes_Nuevas);
 
+router.post("/agregar_imagen", inspectorCtrlImg.insertar_imagen);
+
 router.put(
   "/actualizar",
   inspectorCtrl.actualizar_Datos_Inspeccion_Patente_Nueva
