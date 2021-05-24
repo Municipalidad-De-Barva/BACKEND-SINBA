@@ -194,23 +194,23 @@ export default class Dao_Inspeccion_Ocular extends dao {
   }
 
   insertar_Inspeccion_Ocular(
-    // Datos de la inpeccion ocular
-    FK_Inspeccion_Patente_Nueva, //Corresponde al código (LLave Primaria) de la tabla inspeccion_patente_nueva;
+    FK_Inspeccion_Patente_Nueva,
     Lugar_Visita,
     Fecha,
     Diligencia,
     Resultado,
     // Datos del testigo #1
     FK_Testigo1,
-
-    Telefono_Testigo1,
+    Tel_Testigo1,
     Correo_Testigo1,
-    //firma_testigo1,
+    Firma_testigo1,
     //Datos del testigo #2
     FK_Testigo2,
-    Telefono_Testigo2,
+    Tel_Testigo2,
     Correo_Testigo2,
-    //firma_testigo2,
+    Firma_testigo2,
+    Firma_Inspector_1,
+    Firma_Inspector_2,
     callback
   ) {
     const DaoTestigo = new daotestigo();
@@ -219,17 +219,17 @@ export default class Dao_Inspeccion_Ocular extends dao {
 
     DaoTestigo.insertar_Testigo(
       FK_Testigo1,
-      Telefono_Testigo1,
+      Tel_Testigo1,
       Correo_Testigo1,
-      //firma_testigo1,
+      Firma_testigo1,
       function (result) {
         if (result === "Se ingreso nuevo testigo") {
           // Insertar testigo2
           DaoTestigo.insertar_Testigo(
             FK_Testigo2,
-            Telefono_Testigo2,
+            Tel_Testigo2,
             Correo_Testigo2,
-            //firma_testigo2,
+            Firma_testigo2,
             function (result) {
               if (result === "Se ingreso nuevo testigo") {
                 const connection = dbConnection();
@@ -245,6 +245,8 @@ export default class Dao_Inspeccion_Ocular extends dao {
                     Resultado,
                     FK_Testigo1,
                     FK_Testigo2,
+                    Firma_Inspector_1,
+                    Firma_Inspector_2,
                     Estado: "Pendiente",
                   },
                   function (err, results) {
