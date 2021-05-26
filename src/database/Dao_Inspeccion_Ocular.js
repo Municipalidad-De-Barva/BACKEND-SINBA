@@ -139,9 +139,13 @@ export default class Dao_Inspeccion_Ocular extends dao {
     FK_Testigo1,
     Telefono_Testigo1,
     Correo_Testigo1,
+    Firma_testigo1,
     FK_Testigo2,
     Telefono_Testigo2,
-    Correo_Testigo2
+    Correo_Testigo2,
+    Firma_testigo2,
+    Firma_Inspector_1,
+    Firma_Inspector_2
   ) {
     const query = util.promisify(this.connection.query).bind(this.connection);
 
@@ -158,7 +162,8 @@ export default class Dao_Inspeccion_Ocular extends dao {
       const test3 = await DaoTestigo.insertar_Testigo2(
         FK_Testigo1,
         Telefono_Testigo1,
-        Correo_Testigo1
+        Correo_Testigo1,
+        Firma_testigo1
       );
       const test4 = await DaoTestigo.obtener_Testigo2(FK_Testigo1);
       const resultcontri2 = Object.values(JSON.parse(JSON.stringify(test4)));
@@ -174,7 +179,8 @@ export default class Dao_Inspeccion_Ocular extends dao {
       const test8 = await DaoTestigo.insertar_Testigo2(
         FK_Testigo2,
         Telefono_Testigo2,
-        Correo_Testigo2
+        Correo_Testigo2,
+        Firma_testigo2
       );
       const test9 = await DaoTestigo.obtener_Testigo2(FK_Testigo2);
       const resultcontri4 = Object.values(JSON.parse(JSON.stringify(test9)));
@@ -189,8 +195,12 @@ export default class Dao_Inspeccion_Ocular extends dao {
       Resultado,
       FK_Testigo1: Test1ced,
       FK_Testigo2: Test2ced,
+      Firma_Inspector_1,
+      Firma_Inspector_2,
       Estado: "Pendiente",
     });
+    var mostrarMensaje = "Se realizó con exito...";
+    return mostrarMensaje;
   }
 
   insertar_Inspeccion_Ocular(
