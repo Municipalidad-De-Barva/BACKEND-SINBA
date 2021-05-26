@@ -13,6 +13,8 @@ router.post("/agregar", inspectorCtrl.insertar_Inspecciones_Patentes_Nuevas);
 
 router.post("/agregar_imagen", inspectorCtrlImg.insertar_imagen);
 
+router.post("/obtenerImagenes", inspectorCtrlImg.obtenerListaImagenes);
+
 router.put(
   "/actualizar",
   inspectorCtrl.actualizar_Datos_Inspeccion_Patente_Nueva

@@ -1,19 +1,23 @@
 import config from "../config/config";
 import multer from "multer";
 import path from "path";
-
-import daoInspector from "../database/Dao_Inspeccion_Patente_Nueva";
-const inspector = new daoInspector();
+import {v4 as uuidv4} from "uuid";
+let nombreAleatorio;
+import daoImagenInspecionOcular from "../database/Dao_imagenes_InspeccionOcular";
+import {array} from "@hapi/joi";
+const imgInspOcular = new daoImagenInspecionOcular();
 
 export const storage = multer.diskStorage({
   destination: path.join(__dirname, config.RUTA_INSPECCION_NUEVA),
   filename: (req, file, cb) => {
-    const img = req.file.filename + path.extname(req.file.originalname);
-    cb(null, +img);
+    const img = (nombreAleatorio = uuidv4() + path.extname(file.originalname));
+
+    cb(null, img);
   },
 });
 
 export const Upload = multer({
+  storage,
   dest: path.join(__dirname, config.RUTA_INSPECCION_NUEVA),
   fileFilter: function (req, file, cb) {
     var filetypes = /jpeg|jpg|png/;
@@ -27,22 +31,27 @@ export const Upload = multer({
       "Error: File upload only supports the following filetypes - " + filetypes
     );
   },
-  limits: {fileSize: 10000000},
+  limits: {fileSize: 10000},
 }).single("userpic");
 
 export const insertar_imagen = async (req, res) => {
-  console.log("metodo insertar_imagen");
   Upload(req, res, (err) => {
     if (err) {
       err.message = "The file is so heavy for my service";
       return res.send(err);
     }
+    console.log(req.body);
+    const img = "/public/inspeccionNueva/" + nombreAleatorio;
 
-    const img =
-      "/inspeccionNueva/" +
-      req.file.filename +
-      path.extname(req.file.originalname);
-    console.log("ruta de la imagen", img);
-    res.send("imagen agregada inspeccion");
+    let r = imgInspOcular.insertarImagenesInpeccionOcular(req.body.Codigo, img);
+
+    res.send(r);
   });
+};
+
+export const obtenerListaImagenes = async (req, res) => {
+  let r = await imgInspOcular.obtenerImagenes(req.body.Codigo);
+
+  console.log("r: ", r);
+  return res.send(r);
 };

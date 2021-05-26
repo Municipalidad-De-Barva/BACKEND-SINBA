@@ -2,7 +2,7 @@ import daoInspector from "../database/Dao_Inspeccion_Patente_Nueva";
 const inspector = new daoInspector();
 
 export const insertar_Inspecciones_Patentes_Nuevas = async (req, res) => {
-  res.send("uploaded");
+  //res.send("uploaded");
 
   const {
     FK_Inspector_Administrativo,
