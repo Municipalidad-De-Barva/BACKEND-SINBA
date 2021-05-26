@@ -58,28 +58,31 @@ export const insertar_Inspeccion_Ocular = async (req, res) => {
     Firma_Inspector2,
   } = req.body;
 
-  inspeOcular.insertar_Inspeccion_Ocular(
-    FK_Inspeccion_Patente_Nueva,
-    Lugar,
-    Fecha,
-    Diligencia,
-    Resultado,
-    // Datos del testigo #1
-    FK_Testigo1,
-    Tel_Testigo1,
-    Correo_Testigo1,
-    Firma_testigo1,
-    //Datos del testigo #2
-    FK_Testigo2,
-    Tel_Testigo2,
-    Correo_Testigo2,
-    Firma_testigo2,
-    Firma_Inspector1,
-    Firma_Inspector2,
-    function (result) {
-      return res.status(200).json(result);
-    }
-  );
+  async function run() {
+    let result = await inspeOcular.insertar_Inspeccion_Ocular_Prueba(
+      FK_Inspeccion_Patente_Nueva,
+      Lugar,
+      Fecha,
+      Diligencia,
+      Resultado,
+      // Datos del testigo #1
+      FK_Testigo1,
+      Tel_Testigo1,
+      Correo_Testigo1,
+      Firma_testigo1,
+      //Datos del testigo #2
+      FK_Testigo2,
+      Tel_Testigo2,
+      Correo_Testigo2,
+      Firma_testigo2,
+      Firma_Inspector1,
+      Firma_Inspector2,
+   );
+    return res.status(200).json(result);
+   
+  }
+  run();
+
 };
 
 export const actualizar_Datos_Inspeccion_Ocular = async (req, res) => {
