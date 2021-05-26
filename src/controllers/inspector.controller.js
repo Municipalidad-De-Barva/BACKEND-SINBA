@@ -16,6 +16,12 @@ export const insertar_Inspecciones_Patentes_Nuevas = async (req, res) => {
     Luces_Emergencias,
     Extintor,
     Salida_Emergencia,
+    Parqueo,
+    Disposiciones_Accesibilidad_7600,
+    Servicios_Sanitarios,
+    Actividades_Acorde_Naturaleza_Dimensiones,
+    Acceso_Red,
+    Cumplir_Requisitos_CONEXA,
   } = req.body;
 
   inspector.insertar_Inspecciones_Patentes_Nuevas(
@@ -30,6 +36,12 @@ export const insertar_Inspecciones_Patentes_Nuevas = async (req, res) => {
     Luces_Emergencias,
     Extintor,
     Salida_Emergencia,
+    Parqueo,
+    Disposiciones_Accesibilidad_7600,
+    Servicios_Sanitarios,
+    Actividades_Acorde_Naturaleza_Dimensiones,
+    Acceso_Red,
+    Cumplir_Requisitos_CONEXA,
 
     function (result) {
       inspector.obtener_ultima_inspeccion_patente_(function (result) {
