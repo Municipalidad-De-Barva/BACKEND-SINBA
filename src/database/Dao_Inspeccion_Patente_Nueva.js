@@ -47,6 +47,12 @@ export default class Dao_Inspeccion_Patente_Nueva extends dao {
     Luces_Emergencias,
     Extintor,
     Salida_Emergencia,
+    Parqueo,
+    Disposiciones_Accesibilidad_7600,
+    Servicios_Sanitarios,
+    Actividades_Acorde_Naturaleza_Dimensiones,
+    Acceso_Red,
+    Cumplir_Requisitos_CONEXA,
 
     callback
   ) {
@@ -70,6 +76,12 @@ export default class Dao_Inspeccion_Patente_Nueva extends dao {
         Luces_Emergencias,
         Extintor,
         Salida_Emergencia,
+        Parqueo,
+        Disposiciones_Accesibilidad_7600,
+        Servicios_Sanitarios,
+        Actividades_Acorde_Naturaleza_Dimensiones,
+        Acceso_Red,
+        Cumplir_Requisitos_CONEXA,
       },
       function (err, results) {
         if (err) {
