@@ -52,6 +52,7 @@ import role from "./routes/role.routes";
 import inspector from "./routes/inspector.routes";
 import testigo from "./routes/testigo.routes";
 import insOcular from "./routes/inspeccionOcular.routes";
+import certificado from "./routes/certificado.routes";
 //rutas
 app.get("/", cors(corsOptions), function (req, res, next) {
   res.json({
@@ -79,4 +80,6 @@ app.use("/api/inspector", inspector);
 app.use("/api/testigo", testigo);
 app.use("/api/inspOcular", insOcular);
 
+//certificados
+app.use("/api/certificado", certificado);
 export default app;

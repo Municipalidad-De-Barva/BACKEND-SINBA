@@ -36,3 +36,7 @@ export const signOut = async (req, res) => {
   console.log("mostrando token despues de destruirlo", token);
   return res.status(200).json({message: "signOut"});
 };
+
+export const recuperarCuenta = async (req, res) => {
+  return res.status(200).json({message: "cuenta recuperada"});
+};

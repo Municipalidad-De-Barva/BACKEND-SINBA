@@ -36,3 +36,7 @@ export const crearUsuario = async (req, res) => {
     res.json("Usuario Registrado.");
   }
 };
+
+export const recuperarUsuario = async (req, res) => {
+  return res.status(200).json({message: "usuario recuperado"});
+};
