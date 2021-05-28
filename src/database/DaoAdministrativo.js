@@ -25,6 +25,23 @@ export default class DaoAdministrativo extends dao {
     });
   }
 
+  actualizar_contraseña_administrativo(PK_ID, Nueva_Clave, callback) {
+    var sql = "UPDATE FROM administrativo SET  Clave = ? WHERE  PK_ID = ?";
+
+    this.connection.query(sql, [Nueva_Clave, PK_ID], function (err, results) {
+      if (err) {
+        throw err;
+      }
+      var mostrarMensaje;
+      if (results.length === 0) {
+        mostrarMensaje = "No se pudo realizar la actualizacion de la contraseña...";
+      } else {
+        mostrarMensaje = "Si se pudo realizar la actualizacion de la contraseña...";
+      }
+      return callback(results);
+    });
+  }
+
   obtener_Administrativo(PK_ID, callback) {
     var sql = "SELECT* FROM administrativo WHERE PK_ID = ? ";
 
