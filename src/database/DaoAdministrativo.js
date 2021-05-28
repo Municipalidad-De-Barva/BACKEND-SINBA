@@ -26,23 +26,15 @@ export default class DaoAdministrativo extends dao {
   }
 
   actualizar_contraseña_administrativo(PK_ID, Nueva_Clave, callback) {
-    var sql =
-    "UPDATE administrativo SET Clave = ? Where PK_ID = ? ";
-  
-  this.connection.query(
-    sql,
-    [
-      Nueva_Clave,
-      PK_ID,
-    ],
-    function (err, results) {
+    var sql = "UPDATE administrativo SET Clave = ? Where PK_ID = ? ";
+
+    this.connection.query(sql, [Nueva_Clave, PK_ID], function (err, results) {
       if (err) {
         throw err;
       }
       console.log(results);
       return callback(results);
-    }
-  );
+    });
   }
 
   obtener_Administrativo(PK_ID, callback) {
@@ -103,11 +95,5 @@ export default class DaoAdministrativo extends dao {
         return callback("Se encuentra registrado");
       }
     });
-  }
-
-  actualizarAdministrativo(PK_ID, Clave, cb) {
-    console.log(
-      "metodo actualizar usuario: PK_ID" + PK_ID + " Clave: " + Clave
-    );
   }
 }
