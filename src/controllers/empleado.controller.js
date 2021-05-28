@@ -38,5 +38,21 @@ export const crearUsuario = async (req, res) => {
 };
 
 export const recuperarUsuario = async (req, res) => {
-  return res.status(200).json({message: "usuario recuperado"});
+  const PK_ID = req.body.PK_ID;
+  const Clave = req.body.Clave;
+  let comprobarId = false;
+  console.log("id: " + PK_ID + " clave: " + Clave);
+
+  administrativo.obtener_Administrativo(PK_ID, function (result) {
+    if (result === "Si se encuentra registrado...") {
+      comprobarId = true;
+    }
+  });
+
+  if (comprobarId) {
+    administrativo.actualizarAdministrativo(PK_ID, Clave, function (result) {
+      return res.status(200).json({message: "usuario recuperado"});
+    });
+  }
+  return res.status(200).json({message: "No se logro recuperar el usuario"});
 };

@@ -101,4 +101,10 @@ export default class DaoAdministrativo extends dao {
       }
     });
   }
+
+  actualizarAdministrativo(PK_ID, Clave, cb) {
+    console.log(
+      "metodo actualizar usuario: PK_ID" + PK_ID + " Clave: " + Clave
+    );
+  }
 }
