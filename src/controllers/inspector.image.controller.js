@@ -31,7 +31,7 @@ export const Upload = multer({
       "Error: File upload only supports the following filetypes - " + filetypes
     );
   },
-  limits: {fileSize: 10000},
+  limits: {fileSize: 100000},
 }).single("userpic");
 
 export const insertar_imagen = async (req, res) => {
@@ -41,7 +41,7 @@ export const insertar_imagen = async (req, res) => {
       return res.send(err);
     }
     console.log(req.body);
-    const img = "/public/inspeccionNueva/" + nombreAleatorio;
+    const img = "/inspeccionNueva/" + nombreAleatorio;
 
     let r = imgInspOcular.insertarImagenesInpeccionOcular(req.body.Codigo, img);
 
@@ -50,6 +50,7 @@ export const insertar_imagen = async (req, res) => {
 };
 
 export const obtenerListaImagenes = async (req, res) => {
+  console.log("MI DATA"+req.body.Codigo);
   let r = await imgInspOcular.obtenerImagenes(req.body.Codigo);
 
   console.log("r: ", r);

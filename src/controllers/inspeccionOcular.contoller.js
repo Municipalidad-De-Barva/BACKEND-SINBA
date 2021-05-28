@@ -27,7 +27,7 @@ export const Obtener_Inspeccion_Ocular_Por_ID_Con_Objetos = async (
   res
 ) => {
   const {PK_Codigo_Inspeccion} = req.body;
-  console.log(PK_Codigo_Inspeccion);
+  //console.log(PK_Codigo_Inspeccion);
   async function run() {
     let result = await inspeOcular.Obtener_Inspeccion_Ocular_Por_ID_Con_Objetos(
       PK_Codigo_Inspeccion

@@ -90,7 +90,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
       };
       lista.push(inspe);
     }
-    console.log(lista);
+    //console.log(lista);
     return lista;
   }
 

@@ -38,8 +38,8 @@ export const crearUsuario = async (req, res) => {
 };
 
 export const recuperarUsuario = async (req, res) => {
-  const PK_ID = req.body.PK_ID;
-  const Clave = req.body.Clave;
+  const PK_ID = req.body.user;
+  const Clave = req.body.pass;
   console.log("id: " + PK_ID + " clave: " + Clave);
 
   administrativo.actualizar_contraseña_administrativo(PK_ID, Clave, function (
