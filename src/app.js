@@ -40,7 +40,7 @@ app.use(cors(corsOptions));
 app.use(helmet());
 
 // Static files acceder a las imagenes por una url
-app.use(express.static(path.join(__dirname, config.RUTA_PUBLICA_IMAGENES)));
+app.use(express.static(path.join(__dirname, "public")));
 
 //routes
 import nuevoFormulario from "./routes/nuevoFormulario.routes";
