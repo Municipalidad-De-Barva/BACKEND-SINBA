@@ -22,7 +22,7 @@ export default class Dao_imagenes_InspeccionOcular extends dao {
     const query = util.promisify(this.connection.query).bind(this.connection);
 
     const rows = await query(
-      "SELECT * FROM imagenes_inpeccion where Codigo_Inpeccion_Ocular=?",
+      "SELECT URL_Imagen FROM imagenes_inpeccion where Codigo_Inpeccion_Ocular=?",
       Codigo_Inpeccion_Ocular
     );
 
