@@ -43,12 +43,13 @@ export default class Dao_Testigo extends dao {
     });
   }
 
-  async insertar_Testigo2(PK_ID, Telefono, Correo) {
+  async insertar_Testigo2(PK_ID, Telefono, Correo, firma) {
     const query = util.promisify(this.connection.query).bind(this.connection);
     const rows = await query("INSERT INTO testigo SET ?", {
       PK_ID,
       Telefono,
       Correo,
+      firma,
     });
   }
 

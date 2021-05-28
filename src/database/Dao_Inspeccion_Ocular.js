@@ -139,11 +139,11 @@ export default class Dao_Inspeccion_Ocular extends dao {
     FK_Testigo1,
     Telefono_Testigo1,
     Correo_Testigo1,
-    Firma_testigo1,
+    Firma_Testigo1,
     FK_Testigo2,
     Telefono_Testigo2,
     Correo_Testigo2,
-    Firma_testigo2,
+    Firma_Testigo2,
     Firma_Inspector_1,
     Firma_Inspector_2
   ) {
@@ -163,7 +163,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
         FK_Testigo1,
         Telefono_Testigo1,
         Correo_Testigo1,
-        Firma_testigo1
+        Firma_Testigo1
       );
       const test4 = await DaoTestigo.obtener_Testigo2(FK_Testigo1);
       const resultcontri2 = Object.values(JSON.parse(JSON.stringify(test4)));
@@ -180,7 +180,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
         FK_Testigo2,
         Telefono_Testigo2,
         Correo_Testigo2,
-        Firma_testigo2
+        Firma_Testigo2
       );
       const test9 = await DaoTestigo.obtener_Testigo2(FK_Testigo2);
       const resultcontri4 = Object.values(JSON.parse(JSON.stringify(test9)));
@@ -213,12 +213,12 @@ export default class Dao_Inspeccion_Ocular extends dao {
     FK_Testigo1,
     Tel_Testigo1,
     Correo_Testigo1,
-    Firma_testigo1,
+    Firma_Testigo1,
     //Datos del testigo #2
     FK_Testigo2,
     Tel_Testigo2,
     Correo_Testigo2,
-    Firma_testigo2,
+    Firma_Testigo2,
     Firma_Inspector_1,
     Firma_Inspector_2,
     callback
@@ -231,7 +231,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
       FK_Testigo1,
       Tel_Testigo1,
       Correo_Testigo1,
-      Firma_testigo1,
+      Firma_Testigo1,
       function (result) {
         if (result === "Se ingreso nuevo testigo") {
           // Insertar testigo2
@@ -239,7 +239,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
             FK_Testigo2,
             Tel_Testigo2,
             Correo_Testigo2,
-            Firma_testigo2,
+            Firma_Testigo2,
             function (result) {
               if (result === "Se ingreso nuevo testigo") {
                 const connection = dbConnection();

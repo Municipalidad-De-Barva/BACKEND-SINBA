@@ -48,12 +48,12 @@ export const insertar_Inspeccion_Ocular = async (req, res) => {
     FK_Testigo1,
     Tel_Testigo1,
     Correo_Testigo1,
-    Firma_testigo1,
+    Firma_Testigo1,
     //Datos del testigo #2
     FK_Testigo2,
     Tel_Testigo2,
     Correo_Testigo2,
-    Firma_testigo2,
+    Firma_Testigo2,
     Firma_Inspector1,
     Firma_Inspector2,
   } = req.body;
@@ -69,12 +69,12 @@ export const insertar_Inspeccion_Ocular = async (req, res) => {
       FK_Testigo1,
       Tel_Testigo1,
       Correo_Testigo1,
-      Firma_testigo1,
+      Firma_Testigo1,
       //Datos del testigo #2
       FK_Testigo2,
       Tel_Testigo2,
       Correo_Testigo2,
-      Firma_testigo2,
+      Firma_Testigo2,
       Firma_Inspector1,
       Firma_Inspector2,
    );
