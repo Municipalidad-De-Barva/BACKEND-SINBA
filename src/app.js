@@ -53,6 +53,7 @@ import inspector from "./routes/inspector.routes";
 import testigo from "./routes/testigo.routes";
 import insOcular from "./routes/inspeccionOcular.routes";
 import certificado from "./routes/certificado.routes";
+import patentes from "./routes/patentes.routes";
 //rutas
 app.get("/", cors(corsOptions), function (req, res, next) {
   res.json({
@@ -82,4 +83,5 @@ app.use("/api/inspOcular", insOcular);
 
 //certificados
 app.use("/api/certificado", certificado);
+app.use("/api/patentes", patentes);
 export default app;
