@@ -5,6 +5,6 @@ import {auth} from "../middlewares";
 
 router.post("/crearEmpleado", empleadoCtrl.crearUsuario);
 
-router.post("/recuperarCuenta", empleadoCtrl.recuperarUsuario);
+router.put("/recuperarCuenta", empleadoCtrl.recuperarUsuario);
 
 export default router;
