@@ -112,6 +112,19 @@ export default class DaoSolicitud_Patente extends dao {
     });
   }
 
+  obtener_datos_para_certificado(PK_Codigo,callback){
+
+    var sql =
+    "	SELECT solicitud_patente.Cedula_Propetario, contribuyente.Nombre,solicitud_patente.Actividad,solicitud_patente.Nombre_Comercial_Negocio,solicitud_patente.Direccion_Propietario FROM solicitud_patente  INNER JOIN contribuyente ON solicitud_patente.FK_ID_Contribuyente = contribuyente.PK_ID WHERE PK_Codigo = ? "
+    this.connection.query(sql, [PK_Codigo], function (err, results) {
+      if (err) {
+        throw err;
+      }
+      return callback(results);
+    });
+
+  }
+
   obtener_Solicitudes_NuevasEsp(callback) {
     var sql =
       "select solicitud_patente.PK_Codigo,solicitud_patente.Estado,solicitud_patente.Nombre_Comercial_Negocio,contribuyente.Nombre from contribuyente,solicitud_patente where contribuyente.PK_ID = solicitud_patente.FK_ID_Contribuyente and solicitud_patente.Estado='Nuevo' ";
