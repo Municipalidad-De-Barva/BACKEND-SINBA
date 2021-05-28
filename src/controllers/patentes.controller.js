@@ -1,23 +1,25 @@
 import daoPatentes from "../database/Dao_Patente";
 
 const patentes = new daoPatentes();
+
 export const insertarPatentes = async (req, res) => {
   const {
-    Numero_Patente,
+    Patente_Comercial,
     Distrito,
-    Cedula_Juridica,
-    Contribuyente,
+    Ced_Jur_Fis,
+    Solicitante,
     Actividad,
-    Local,
+    Nombre_Local,
     Direccion,
   } = req.body;
   patentes.insertar_patentes(
-    Numero_Patente,
+    Patente_Comercial,
+
     Distrito,
-    Cedula_Juridica,
-    Contribuyente,
+    Ced_Jur_Fis,
+    Solicitante,
     Actividad,
-    Local,
+    Nombre_Local,
     Direccion,
     function (params) {
       res.status(200).json({message: params});
