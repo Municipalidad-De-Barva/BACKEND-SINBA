@@ -11,6 +11,7 @@ export const insertarPatentes = async (req, res) => {
     Actividad,
     Nombre_Local,
     Direccion,
+    Fecha_Limite,
   } = req.body;
   patentes.insertar_patentes(
     Patente_Comercial,
@@ -21,6 +22,7 @@ export const insertarPatentes = async (req, res) => {
     Actividad,
     Nombre_Local,
     Direccion,
+    Fecha_Limite,
     function (params) {
       res.status(200).json({message: params});
     }

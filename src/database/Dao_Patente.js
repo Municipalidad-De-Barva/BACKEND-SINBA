@@ -27,6 +27,7 @@ export default class Dao_Patente extends dao {
     Actividad,
     Local,
     Direccion,
+    Fecha_Limite,
     callback
   ) {
     var moment = require("moment");
@@ -43,9 +44,9 @@ export default class Dao_Patente extends dao {
         Cedula_Juridica,
         Contribuyente,
         Actividad,
-
         Local,
         Direccion,
+        Fecha_Limite,
       },
       function (err, results) {
         if (err) {
