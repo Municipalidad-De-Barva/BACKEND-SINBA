@@ -41,7 +41,6 @@ export const insertar_Inspeccion_Ocular = async (req, res) => {
   const {
     FK_Inspeccion_Patente_Nueva,
     Lugar,
-    Fecha,
     Diligencia,
     Resultado,
     // Datos del testigo #1
@@ -62,7 +61,6 @@ export const insertar_Inspeccion_Ocular = async (req, res) => {
     let result = await inspeOcular.insertar_Inspeccion_Ocular_Prueba(
       FK_Inspeccion_Patente_Nueva,
       Lugar,
-      Fecha,
       Diligencia,
       Resultado,
       // Datos del testigo #1

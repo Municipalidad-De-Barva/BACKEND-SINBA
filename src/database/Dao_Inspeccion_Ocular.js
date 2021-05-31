@@ -133,7 +133,6 @@ export default class Dao_Inspeccion_Ocular extends dao {
   async insertar_Inspeccion_Ocular_Prueba(
     FK_Inspeccion_Patente_Nueva,
     Lugar_Visita,
-    Fecha,
     Diligencia,
     Resultado,
     FK_Testigo1,
@@ -186,11 +185,11 @@ export default class Dao_Inspeccion_Ocular extends dao {
       const resultcontri4 = Object.values(JSON.parse(JSON.stringify(test9)));
       Test2ced = resultcontri4[0].PK_ID;
     }
-
+    var myDate = moment(new Date()).format("YYYY-MM-DD");
     const rows = await query("INSERT INTO inspeccion_ocular SET ?", {
       FK_Inspeccion_Patente_Nueva,
       Lugar_Visita,
-      Fecha,
+      Fecha:myDate,
       Diligencia,
       Resultado,
       FK_Testigo1: Test1ced,

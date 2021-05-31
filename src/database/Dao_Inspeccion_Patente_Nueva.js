@@ -59,7 +59,7 @@ export default class Dao_Inspeccion_Patente_Nueva extends dao {
     var moment = require("moment");
     const connection = dbConnection();
     var sql = "INSERT INTO inspeccion_patente_nueva SET ?";
-    var myDate = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+    var myDate = moment(new Date()).format("YYYY-MM-DD");
     console.log(myDate);
     connection.query(
       sql,
