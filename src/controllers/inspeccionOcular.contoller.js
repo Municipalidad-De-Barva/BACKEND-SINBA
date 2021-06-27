@@ -74,13 +74,11 @@ export const insertar_Inspeccion_Ocular = async (req, res) => {
       Correo_Testigo2,
       Firma_Testigo2,
       Firma_Inspector1,
-      Firma_Inspector2,
-   );
+      Firma_Inspector2
+    );
     return res.status(200).json(result);
-   
   }
   run();
-
 };
 
 export const actualizar_Datos_Inspeccion_Ocular = async (req, res) => {
@@ -117,7 +115,7 @@ export const Cambiar_Estado_Inspeccion_Ocular = async (req, res) => {
     PK_Codigo_Inspeccion,
     Estado
   );
-  return res.status(200).text("El Estado se ha cambiado");
+  return res.status(200).json("El Estado se ha cambiado");
 };
 
 export const obtener_contribuyente_ocular = async (req, res) => {

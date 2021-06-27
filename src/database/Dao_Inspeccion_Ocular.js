@@ -100,8 +100,8 @@ export default class Dao_Inspeccion_Ocular extends dao {
     const query = util.promisify(this.connection.query).bind(this.connection);
     let new1 = PK_Codigo_Inspeccion;
     console.log(new1);
-    new1 = new1.substring(1);
-    new1 = new1.substring(new1.length);
+    //new1 = new1.substring(1);
+    //  new1 = new1.substring(new1.length);
     console.log("mi actual" + PK_Codigo_Inspeccion);
     const rows = await query(
       "SELECT * FROM inspeccion_ocular where PK_Codigo_Inspeccion = ?",
@@ -189,7 +189,7 @@ export default class Dao_Inspeccion_Ocular extends dao {
     const rows = await query("INSERT INTO inspeccion_ocular SET ?", {
       FK_Inspeccion_Patente_Nueva,
       Lugar_Visita,
-      Fecha:myDate,
+      Fecha: myDate,
       Diligencia,
       Resultado,
       FK_Testigo1: Test1ced,
